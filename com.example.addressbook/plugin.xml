@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.example.addressbook.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="com.example.addressbook.Perspective"
+            id="com.example.addressbook.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.example.addressbook.views.AddressList"
+            id="com.example.addressbook.AddressList"
+            name="Adressen"
+            restorable="true">
+      </view>
+      <view
+            class="com.example.addressbook.views.AddressEditor"
+            id="com.example.addressbook.AddressEditor"
+            name="Adresse"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.example.addressbook.application"
+            name="AddressBook">
+      </product>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.example.addressbook.application"
+            name="AddressBook">
+         <property
+               name="appName"
+               value="AddressBook">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: App
+Bundle-SymbolicName: name.samolisov.plugins.app;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.equinox.http.jetty;bundle-version="3.0.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

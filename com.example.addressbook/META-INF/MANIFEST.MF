@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Addressbook
+Bundle-SymbolicName: com.example.addressbook;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.example.addressbook.Activator
+Bundle-Vendor: EXAMPLE
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.example.addressbook.services;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: com.example.addressbook.entities,
+ com.example.addressbook.services

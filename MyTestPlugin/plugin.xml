@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="my.app"
+         name="MyTestApplication"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="my.Application ">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="my.MyPerspective"
+            id="my.perspective1"
+            name="MyPerspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="my.MyView1"
+            id="my.views.view1"
+            name="MyView 1">
+      </view>
+      <view
+            allowMultiple="true"
+            class="my.MyView2"
+            id="my.views.view2"
+            name="MyView2">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="MyTestPlugin.objectContribution1"
+            objectClass="my.model.Word">
+         <action
+               class="my.WordNameObjectAction"
+               id="MyTestPlugin.action1"
+               label="Word Object Action"
+               menubarPath="additions">
+         </action>
+         <filter
+               name="color"
+               value="Yellow">
+         </filter>
+      </objectContribution>
+      <viewerContribution
+            id="MyTestPlugin.viewerContribution1"
+            targetID="my.views.view2.popup">
+         <action
+               class="my.TestAction2"
+               id="MyTestPlugin.action2"
+               label="Word View1 Action"
+               menubarPath="additions">
+         </action>
+      </viewerContribution>
+   </extension>
+
+</plugin>
