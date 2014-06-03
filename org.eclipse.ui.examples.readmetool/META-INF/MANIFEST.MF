@@ -1,0 +1,109 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Built-By: e4Build
+Bundle-SymbolicName: org.eclipse.ui.examples.readmetool; singleton:=tr
+ ue
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
+ rm/eclipse.platform.ui.git;path="examples/org.eclipse.ui.examples.rea
+ dmetool";tag="I20130423-0017";commitId=d1c860b88f7bec51cc54f45f59d999
+ 853142d14d
+Bundle-Activator: org.eclipse.ui.examples.readmetool.ReadmePlugin
+Require-Bundle: org.eclipse.ui,org.eclipse.core.resources,org.eclipse.
+ core.runtime,org.eclipse.ui.views,org.eclipse.ui.ide,org.eclipse.jfac
+ e.text,org.eclipse.text,org.eclipse.ui.workbench.texteditor,org.eclip
+ se.ui.editors
+Bundle-Version: 3.3.200.v20130417-1252
+Export-Package: org.eclipse.ui.examples.readmetool
+Bundle-ClassPath: readmetool.jar
+Build-Jdk: 1.7.0_11
+Bundle-Vendor: %Plugin.providerName
+Bundle-Name: %Plugin.name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: plugin.properties
+SHA1-Digest: zwiqSbg2TvZgeHJkPVfByJLaXUA=
+
+Name: HelpContexts.xml
+SHA1-Digest: La/UstrcE8SuDhLgCICLnd4PCYo=
+
+Name: plugin.xml
+SHA1-Digest: zUmQlJLV6sODrTYfj6ieu6/D9/Y=
+
+Name: doc-html/hglegal.htm
+SHA1-Digest: 6UHSQUt/6/KJKxCvHbP5TVrlLpk=
+
+Name: icons/obj16/newreadme_wiz.gif
+SHA1-Digest: alRV/aoUJBPbjKI94aw1AfvMslM=
+
+Name: doc-html/ui_readmetool_ex.html
+SHA1-Digest: x584gQiO5VfGkfJlJLjr+izKKu4=
+
+Name: icons/obj16/editor.gif
+SHA1-Digest: GBFyUw66caqMlFO5ueclN4e8YPY=
+
+Name: doc.zip
+SHA1-Digest: Oj2k+7drs/87Tp0GubljDWHvXCs=
+
+Name: about.html
+SHA1-Digest: ejOZra0kypGLQQ2bJtGTX+LI8tU=
+
+Name: icons/ctool16/action1.gif
+SHA1-Digest: 7R1tHTWuYzGavPY1jMSm51JMDUE=
+
+Name: icons/ctool16/action2.gif
+SHA1-Digest: I8s0CM3VMKmDqcV2A/mpvgMRhog=
+
+Name: icons/ctool16/openbrwsr.gif
+SHA1-Digest: tt8j0e7A5yfRXWLRZ6ARIuuwaU8=
+
+Name: icons/dtool16/action1.gif
+SHA1-Digest: fht+oWwjP7A2sbw9+V6iS40DZLE=
+
+Name: icons/ctool16/action3.gif
+SHA1-Digest: pTq+Yy/zuXm4vKbgsiraLvWgJ8I=
+
+Name: icons/dtool16/action2.gif
+SHA1-Digest: aWWeV6Ud8Lp4A46NjRSonG3FzKc=
+
+Name: icons/dtool16/openbrwsr.gif
+SHA1-Digest: AIf0lEzVvq0HO9uH2T2noPsv+ug=
+
+Name: icons/etool16/action1.gif
+SHA1-Digest: 3CEdUuittAkM4beq6TP6v9RyWmA=
+
+Name: icons/dtool16/action3.gif
+SHA1-Digest: c1LR1jEEhsCrAg12md7mnqAJMk8=
+
+Name: icons/etool16/action2.gif
+SHA1-Digest: BGZ+tDImL/j8siZy8s7KMizHsVI=
+
+Name: icons/etool16/openbrwsr.gif
+SHA1-Digest: VohFIuY8GbJg9vOupBTl/Gb6CeE=
+
+Name: icons/etool16/action3.gif
+SHA1-Digest: jSrsMM3K2qUE/67faYZykv4rFGA=
+
+Name: readmetool.jar
+SHA1-Digest: p8gewMjRguB99CC00s0lxUeFwPk=
+
+Name: icons/view16/sections.gif
+SHA1-Digest: 84IkVMZuZN1Tf8HX07Bc+Xvycjw=
+
+Name: icons/obj16/usereditor.gif
+SHA1-Digest: a2PoCsVWFOg2DRtgeL3/ZwxDnO8=
+
+Name: doc/hglegal.htm
+SHA1-Digest: pCEA+T9jmiFBfJMhflDl+tz5gjk=
+
+Name: doc/org_eclipse_ui_examples_readmetool_sectionParser.html
+SHA1-Digest: OlBQIgKO/uUXfHuuqO2Ma+FLrMY=
+
+Name: icons/wizban/newreadme_wiz.gif
+SHA1-Digest: jRCY8ea1J9W6qYCcmSkV0IPJsSI=
+
+Name: doc/org_eclipse_ui_examples_readmetool.html
+SHA1-Digest: RWhXlzeXJpZy508084i4xkPebOs=
+

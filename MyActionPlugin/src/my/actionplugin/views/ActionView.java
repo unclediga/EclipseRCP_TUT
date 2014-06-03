@@ -1,15 +1,37 @@
 package my.actionplugin.views;
 
 
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.*;
-import org.eclipse.jface.viewers.*;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.jface.action.*;
+import java.util.ArrayList;
+
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.*;
-import org.eclipse.swt.widgets.Menu;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.IWorkbenchCommandConstants;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.part.ViewPart;
 
 
 /**
@@ -42,6 +64,20 @@ public class ActionView extends ViewPart {
 	private Action action2;
 	private Action doubleClickAction;
 
+	private Action action3;
+	private Action select_all;
+	
+	private MyIntType[] inputElements = new MyIntType[] { 
+			new MyIntType(1, "One"),
+			new MyIntType(2, "Two"), 
+			new MyIntType(3, "Three"),
+			new MyIntType(4, "Four"),
+			new MyIntType(5, "Five")
+	};
+
+	private Action action4;;
+	
+
 	/*
 	 * The content provider class is responsible for
 	 * providing objects to the view. It can wrap
@@ -58,12 +94,14 @@ public class ActionView extends ViewPart {
 		public void dispose() {
 		}
 		public Object[] getElements(Object parent) {
-			return new String[] { "One", "Two", "Three" };
+//			return new String[] { "One", "Two", "Three","Four","Five" };
+			return inputElements;
 		}
 	}
 	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 		public String getColumnText(Object obj, int index) {
-			return getText(obj);
+//			return getText(obj);
+			return ((MyIntType)obj).name;
 		}
 		public Image getColumnImage(Object obj, int index) {
 			return getImage(obj);
@@ -74,6 +112,7 @@ public class ActionView extends ViewPart {
 		}
 	}
 	class NameSorter extends ViewerSorter {
+		
 	}
 
 	/**
@@ -121,6 +160,12 @@ public class ActionView extends ViewPart {
 		manager.add(action1);
 		manager.add(new Separator());
 		manager.add(action2);
+		manager.add(new Separator());
+		manager.add(action3);
+		manager.add(new Separator());
+		manager.add(action4);
+		manager.add(new Separator());
+		manager.add(select_all);
 	}
 
 	private void fillContextMenu(IMenuManager manager) {
@@ -162,6 +207,53 @@ public class ActionView extends ViewPart {
 				showMessage("Double-click detected on "+obj.toString());
 			}
 		};
+		
+		
+		action3 = new Action(){
+
+			@Override
+			public void run() {
+				IStructuredContentProvider contentProvider = (IStructuredContentProvider) viewer.getContentProvider();
+				Object[] elements = contentProvider.getElements(null);
+				ArrayList<MyIntType> elements2 = new ArrayList<MyIntType>();				
+				for (int i = 0; i < elements.length; i++) {
+					MyIntType object = (MyIntType) elements[i];
+					if(object.isEven())
+						elements2.add(object);
+				}
+				viewer.setSelection(new StructuredSelection(elements2),true); 
+			}
+			
+			
+		};
+		action3.setText("My acton3");
+		
+		action4 = new Action(){
+
+			@Override
+			public void run() {
+				System.out.println("SELECT ALL: action id"+ActionFactory.SELECT_ALL.getId()+" comm id "+ActionFactory.SELECT_ALL.getCommandId());
+				System.out.println("COPY: action id"+ActionFactory.COPY.getId()+" comm id "+ActionFactory.COPY.getCommandId());
+				System.out.println("PASTE: action id"+ActionFactory.PASTE.getId()+" comm id "+ActionFactory.PASTE.getCommandId());
+
+			}
+			
+		};
+		action4.setText("Show glob actions ID");
+		
+		
+		IActionBars bar = getViewSite().getActionBars();
+				
+//		bar.setGlobalActionHandler(ActionFactory.SELECT_ALL.getId(), action3);
+		bar.setGlobalActionHandler(IWorkbenchActionConstants.SELECT_ALL, action3);
+		
+		select_all = (Action) ActionFactory.SELECT_ALL.create(getSite().getWorkbenchWindow());
+//		bar.setGlobalActionHandler(IWorkbenchCommandConstants.EDIT_SELECT_ALL, select_all);
+//		bar.setGlobalActionHandler(ActionFactory.SELECT_ALL.getId(), select_all);
+
+		
+		bar.updateActionBars();
+		
 	}
 
 	private void hookDoubleClickAction() {
@@ -184,4 +276,25 @@ public class ActionView extends ViewPart {
 	public void setFocus() {
 		viewer.getControl().setFocus();
 	}
+	
+	
+	class MyIntType{
+		public int number;
+		public String name;
+		
+		public MyIntType(int number, String name) {
+			this.number = number;
+			this.name = name;
+		};
+		
+		public String toString(){
+			return "["+number+"]"+name;
+		}
+		
+		public boolean isEven(){
+			return !(number % 2 > 0); 
+		}
+		
+	}
+	
 }
