@@ -10,11 +10,59 @@
       </category>
       <view
             name="Action View"
-            icon="icons/sample.gif"
+            icon="icons/about.gif"
             category="MyActionPlugin"
             class="my.actionplugin.views.ActionView"
             id="my.actionplugin.views.ActionView">
       </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            description="Описание для Action Set #1"
+            id="MyActionPlugin.ActionSet1"
+            label="Action Set #1"
+            visible="true">
+         <menu
+               icon="icons/online.gif"
+               id="MyActionPlugin.ActionSet1.menu1"
+               label="ActionSet-Menu1"
+               path="window/additions">
+            <groupMarker
+                  name="groupMarker1">
+            </groupMarker>
+            <separator
+                  name="separator1">
+            </separator>
+            <groupMarker
+                  name="additions">
+            </groupMarker>
+         </menu>
+         <action
+               icon="icons/chat.gif"
+               id="MyActionPlugin.as1.action1"
+               label="AS1 Action1"
+               menubarPath="edit/MyActionPlugin.ActionSet1.menu1/groupMarker1"
+               style="push"
+               toolbarPath="Normal/additions">
+         </action>
+         <action
+               icon="icons/away.gif"
+               id="MyActionPlugin.as1.action2"
+               label="AS1 Action2"
+               menubarPath="window/MyActionPlugin.ActionSet1.menu1/separator1"
+               style="push"
+               toolbarPath="Normal/additions">
+         </action>
+         <action
+               icon="icons/dnd.gif"
+               id="MyActionPlugin.as1.action3"
+               label="AS1 Action3"
+               menubarPath="window/MyActionPlugin.ActionSet1.menu1/additions"
+               style="push"
+               toolbarPath="additions">
+         </action>
+      </actionSet>
    </extension>
 
 </plugin>
