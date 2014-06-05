@@ -1,0 +1,198 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: e4Build
+Bundle-SymbolicName: org.eclipse.ui.examples.contributions; singleton:
+ =true
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
+ rm/eclipse.platform.ui.git;path="examples/org.eclipse.ui.examples.con
+ tributions";tag="I20130402-0800";commitId=ac8cd02e835171340e42b92f4bc
+ 4f2c861c9a2ce
+Bundle-Activator: org.eclipse.ui.examples.contributions.Activator
+Require-Bundle: org.eclipse.ui;bundle-version="[3.3.0,4.0.0)",org.ecli
+ pse.core.runtime,org.eclipse.core.expressions;bundle-version="[3.3.0,
+ 4.0.0)"
+Bundle-Version: 3.3.100.v20130326-1250
+Build-Jdk: 1.7.0_11
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %contributions.Activator.providerName
+Bundle-Name: %contributions.Activator.name
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/ui/examples/contributions/view/InfoView$ContentProvi
+ der.class
+SHA1-Digest: Zv8Oyp5Gb6VWMt2pUNeOYXxILV4=
+
+Name: org/eclipse/ui/examples/contributions/view/InfoView$2.class
+SHA1-Digest: DDMBCjNnrDjgsV8syhtF+XMMQm4=
+
+Name: org/eclipse/ui/examples/contributions/editor/InfoEditor$2.class
+SHA1-Digest: 8bU/oAzWtkdbVZFdqqbDZTGjUn8=
+
+Name: org/eclipse/ui/examples/contributions/rcp/ContributionApplicatio
+ n.class
+SHA1-Digest: s2fr4R0ruFMlwU1ZjREP8f+9Uy0=
+
+Name: icons/sample.gif
+SHA1-Digest: AFju2Q2+1Vh+Fu1wE08m60Jwc0g=
+
+Name: org/eclipse/ui/examples/contributions/handlers/GlobalMenuHandler
+ .class
+SHA1-Digest: swIbS9xwWQcahcXRNbQdr3OlBv0=
+
+Name: org/eclipse/ui/examples/contributions/editor/DynamicEditorList.c
+ lass
+SHA1-Digest: wg3Wbou7krxLpVK9/EQPtyk66Aw=
+
+Name: icons/perspective.gif
+SHA1-Digest: 84IkVMZuZN1Tf8HX07Bc+Xvycjw=
+
+Name: org/eclipse/ui/examples/contributions/rcp/ApplicationWorkbenchAd
+ visor.class
+SHA1-Digest: mNmO+p4LA8t/TcivHPoOF1V/obQ=
+
+Name: org/eclipse/ui/examples/contributions/rcp/ApplicationActionBarAd
+ visor.class
+SHA1-Digest: q1jrVT5PEL7OwcGKjpwea/feamc=
+
+Name: org/eclipse/ui/examples/contributions/model/PersonServiceFactory
+ .class
+SHA1-Digest: 3y2oP2Rgx9DwVgOSIctTDN1qvPs=
+
+Name: org/eclipse/ui/examples/contributions/editor/DeltaInfoHandler.cl
+ ass
+SHA1-Digest: Lnt4m5yP94+Fh8SfjFkK6XfwZ9E=
+
+Name: icons/sample2.gif
+SHA1-Digest: yoxjmqMtVphUpFQAd45TKQuy8gU=
+
+Name: org/eclipse/ui/examples/contributions/editor/IntegerTypeConverte
+ r.class
+SHA1-Digest: CpBp41M2/Sjx+ke7soc5JwZIj1w=
+
+Name: icons/new_wiz.gif
+SHA1-Digest: oPC08qQt59LJWyeGE0eAboeBTn4=
+
+Name: org/eclipse/ui/examples/contributions/view/RefreshInfoHandler.cl
+ ass
+SHA1-Digest: /8bDNnTPNbTFagWMVI+jrW23Ino=
+
+Name: org/eclipse/ui/examples/contributions/rcp/Perspective.class
+SHA1-Digest: G1LPuNS+sUXwyVfhdkuKueE8IyQ=
+
+Name: org/eclipse/ui/examples/contributions/rcp/ApplicationWorkbenchAd
+ visor$1.class
+SHA1-Digest: MOZ4AqeeB5r0GGHmMfvVlUykonY=
+
+Name: org/eclipse/ui/examples/contributions/ContributionMessages.class
+SHA1-Digest: n7r9Wv8WL0WtLuLP80bD/fB+MWE=
+
+Name: org/eclipse/ui/examples/contributions/model/PersonServiceSlave.c
+ lass
+SHA1-Digest: M5nd9Wxj4paUv9BWtZyKalSeeRI=
+
+Name: org/eclipse/ui/examples/contributions/ExampleControlContribution
+ .class
+SHA1-Digest: LsmKjuuGqEKq+8c/35kLarKbpzw=
+
+Name: org/eclipse/ui/examples/contributions/model/UserPropertyTester.c
+ lass
+SHA1-Digest: XkyM38VIgxuGUdvhBVHQUv3WpD4=
+
+Name: org/eclipse/ui/examples/contributions/editor/ActivateEditorHandl
+ er.class
+SHA1-Digest: +mDFjbpu7USsejNrxaJj/Yn9S+c=
+
+Name: org/eclipse/ui/examples/contributions/view/InfoView.class
+SHA1-Digest: H8c5s6WUjWDyyK9QEveb6m4emSU=
+
+Name: org/eclipse/ui/examples/contributions/editor/InfoEditor.class
+SHA1-Digest: ALoK1/hMZ4KxaVY3aurFmtS5U3I=
+
+Name: org/eclipse/ui/examples/contributions/view/AdminHandler.class
+SHA1-Digest: AUSQc5nkYjQmQl/fKrtMLRA96AI=
+
+Name: org/eclipse/ui/examples/contributions/editor/InfoEditor$1.class
+SHA1-Digest: pUxI9Q4zOqxadhUgnCtonArEAcw=
+
+Name: org/eclipse/ui/examples/contributions/view/InfoView$1.class
+SHA1-Digest: KViY0BiW3QUv7GSoLz7X1ipj88o=
+
+Name: org/eclipse/ui/examples/contributions/messages.properties
+SHA1-Digest: sOnd8FXO7GyouWjG9flx2jdF610=
+
+Name: org/eclipse/ui/examples/contributions/view/InfoView$3.class
+SHA1-Digest: CSxUcae0HoB6/hRC70jd2YzJ4Hk=
+
+Name: plugin.properties
+SHA1-Digest: IqxxF4+Hy2lvX09CqBOomer36bA=
+
+Name: org/eclipse/ui/examples/contributions/model/IPersonService.class
+SHA1-Digest: stouk+cBkrjCc5FPkFUMW1myuhc=
+
+Name: org/eclipse/ui/examples/contributions/handlers/InfoAboutHandler.
+ class
+SHA1-Digest: 85GzWaTanL+90JURMkqTiKITqLw=
+
+Name: org/eclipse/ui/examples/contributions/rcp/ApplicationWorkbenchWi
+ ndowAdvisor.class
+SHA1-Digest: oMmPP5tw5q20uoqCpQWJdOFM9B0=
+
+Name: icons/change_obj.gif
+SHA1-Digest: R8HcObKb0v2GdTsmx2C6Lk5iM7U=
+
+Name: icons/editor.gif
+SHA1-Digest: GBFyUw66caqMlFO5ueclN4e8YPY=
+
+Name: org/eclipse/ui/examples/contributions/model/PersonService.class
+SHA1-Digest: 3eNaWdNlyARB+3eTClYHP62g5/A=
+
+Name: org/eclipse/ui/examples/contributions/view/EditInfoHandler.class
+SHA1-Digest: gqid778uXPzSHIZaAu6FLwBGRQI=
+
+Name: plugin.xml
+SHA1-Digest: N4bjsv6ioirBs6EKdVZwwPmY0mU=
+
+Name: org/eclipse/ui/examples/contributions/rcp/ContributionApplicatio
+ n$1.class
+SHA1-Digest: N+bf5nUFy26ZonwAHr2a/hDSCu4=
+
+Name: org/eclipse/ui/examples/contributions/editor/DynamicEditorList$N
+ obodyHereContribution.class
+SHA1-Digest: k2J4ejXwHxcKm0Ej4mDJd2YcV7E=
+
+Name: org/eclipse/ui/examples/contributions/model/PersonWizardPage.cla
+ ss
+SHA1-Digest: afc/NflHKxbUXaz46iIqrR+HHBo=
+
+Name: org/eclipse/ui/examples/contributions/view/LoginHandler.class
+SHA1-Digest: hSb6Ji32n8n95LtHxziOhku+mcA=
+
+Name: about.html
+SHA1-Digest: ejOZra0kypGLQQ2bJtGTX+LI8tU=
+
+Name: org/eclipse/ui/examples/contributions/model/PersonInput.class
+SHA1-Digest: SIZ7JAlTKAPdGAm+6oyYd4++h/U=
+
+Name: org/eclipse/ui/examples/contributions/model/Person.class
+SHA1-Digest: 22Z33xfNnk73C6CZPatj3/6/JzI=
+
+Name: org/eclipse/ui/examples/contributions/model/UserSourceProvider.c
+ lass
+SHA1-Digest: zvIrxV+TI7K6+doEoYY/TIGsuJo=
+
+Name: org/eclipse/ui/examples/contributions/view/SwapInfoHandler.class
+SHA1-Digest: hJgM/bTZEK9syffdw6Fmp0PNrao=
+
+Name: org/eclipse/ui/examples/contributions/handlers/InfoAboutHandler$
+ InfoAboutDialog.class
+SHA1-Digest: aKoWk2sCnKWYVXGYFb9N1BHO6oo=
+
+Name: org/eclipse/ui/examples/contributions/Activator.class
+SHA1-Digest: oQRmr2npqs+oz22FXXQ59vIjEb8=
+
+Name: org/eclipse/ui/examples/contributions/model/PersonWizard.class
+SHA1-Digest: t9YwNy/GXU2p+1ie+yHJfVNXMtU=
+

@@ -42,25 +42,34 @@
                icon="icons/chat.gif"
                id="MyActionPlugin.as1.action1"
                label="AS1 Action1"
-               menubarPath="edit/MyActionPlugin.ActionSet1.menu1/groupMarker1"
+               menubarPath="window/MyActionPlugin.ActionSet1.menu1/groupMarker1"
+               pulldown="true"
                style="push"
-               toolbarPath="Normal/additions">
+               toolbarPath="org.eclipse.debug.ui.launchActionSet/mytoolbar">
+            <enablement>
+               <pluginState
+                     id="MyActionPlugin.pluginState1"
+                     value="installed">
+               </pluginState>
+            </enablement>
          </action>
          <action
                icon="icons/away.gif"
                id="MyActionPlugin.as1.action2"
                label="AS1 Action2"
                menubarPath="window/MyActionPlugin.ActionSet1.menu1/separator1"
+               pulldown="true"
                style="push"
-               toolbarPath="Normal/additions">
+               toolbarPath="org.eclipse.debug.ui.launchActionSet/mytoolbar">
          </action>
          <action
                icon="icons/dnd.gif"
                id="MyActionPlugin.as1.action3"
                label="AS1 Action3"
                menubarPath="window/MyActionPlugin.ActionSet1.menu1/additions"
+               pulldown="true"
                style="push"
-               toolbarPath="additions">
+               toolbarPath="org.eclipse.debug.ui.launchActionSet/debug">
          </action>
       </actionSet>
    </extension>
