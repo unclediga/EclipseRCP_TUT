@@ -10,7 +10,7 @@
       </category>
       <view
             name="Action View"
-            icon="icons/about.gif"
+            icon="icons/alt16.gif"
             category="MyActionPlugin"
             class="my.actionplugin.views.ActionView"
             id="my.actionplugin.views.ActionView">
@@ -42,22 +42,16 @@
                icon="icons/chat.gif"
                id="MyActionPlugin.as1.action1"
                label="AS1 Action1"
-               menubarPath="window/MyActionPlugin.ActionSet1.menu1/groupMarker1"
+               menubarPath="window/additions"
                pulldown="true"
                style="push"
                toolbarPath="org.eclipse.debug.ui.launchActionSet/mytoolbar">
-            <enablement>
-               <pluginState
-                     id="MyActionPlugin.pluginState1"
-                     value="installed">
-               </pluginState>
-            </enablement>
          </action>
          <action
                icon="icons/away.gif"
                id="MyActionPlugin.as1.action2"
                label="AS1 Action2"
-               menubarPath="window/MyActionPlugin.ActionSet1.menu1/separator1"
+               menubarPath="window/additions"
                pulldown="true"
                style="push"
                toolbarPath="org.eclipse.debug.ui.launchActionSet/mytoolbar">
@@ -66,12 +60,60 @@
                icon="icons/dnd.gif"
                id="MyActionPlugin.as1.action3"
                label="AS1 Action3"
-               menubarPath="window/MyActionPlugin.ActionSet1.menu1/additions"
+               menubarPath="window/additions"
                pulldown="true"
                style="push"
                toolbarPath="org.eclipse.debug.ui.launchActionSet/debug">
          </action>
       </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="MyActionPlugin.viewActions1"
+            targetID="my.actionplugin.views.ActionView">
+         <menu
+               icon="icons/online.gif"
+               id="MyActionPlugin.viewActions1.menu1"
+               label="viewMenu1"
+               path="additions2">
+            <groupMarker
+                  name="groupMarker1">
+            </groupMarker>
+         </menu>
+         <action
+               icon="icons/chat.gif"
+               id="MyActionPlugin.viewActions1.action1"
+               label="ViewAction1"
+               style="push">
+            <enablement>
+               <objectClass
+                     name="myactionplugin.Object1">
+               </objectClass>
+            </enablement>
+         </action>
+         <action
+               id="MyActionPlugin.viewActions1.action2"
+               label="ViewAction2"
+               menubarPath="additions1"
+               style="push">
+            <selection
+                  class="myactionplugin.Object1">
+            </selection>
+         </action>
+      </viewContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="MyActionPlugin.viewerContribution1"
+            targetID="my.actionplugin.views.ActionView">
+         <action
+               id="MyActionPlugin.popup.action1"
+               label="Popup Action1"
+               menubarPath="additions">
+         </action>
+      </viewerContribution>
    </extension>
 
 </plugin>

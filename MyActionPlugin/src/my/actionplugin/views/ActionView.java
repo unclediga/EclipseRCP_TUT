@@ -147,7 +147,7 @@ public class ActionView extends ViewPart {
 		});
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
+		//getSite().registerContextMenu(menuMgr, viewer);
 	}
 
 	private void contributeToActionBars() {
@@ -158,13 +158,11 @@ public class ActionView extends ViewPart {
 
 	private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(action1);
-		manager.add(new Separator());
 		manager.add(action2);
-		manager.add(new Separator());
+		manager.add(new Separator("additions1"));
 		manager.add(action3);
-		manager.add(new Separator());
+		manager.add(new Separator("additions2"));
 		manager.add(action4);
-		manager.add(new Separator());
 		manager.add(select_all);
 	}
 
