@@ -39,11 +39,13 @@
             </groupMarker>
          </menu>
          <action
+               allowLabelUpdate="true"
                icon="icons/chat.gif"
                id="MyActionPlugin.as1.action1"
                label="AS1 Action1"
                menubarPath="window/additions"
                pulldown="true"
+               retarget="true"
                style="push"
                toolbarPath="org.eclipse.debug.ui.launchActionSet/mytoolbar">
          </action>
@@ -64,6 +66,12 @@
                pulldown="true"
                style="push"
                toolbarPath="org.eclipse.debug.ui.launchActionSet/debug">
+         </action>
+         <action
+               definitionId="org.eclipse.ui.file.exit"
+               id="MyActionPlugin.as1.actionExit"
+               label="Exit"
+               style="push">
          </action>
       </actionSet>
    </extension>

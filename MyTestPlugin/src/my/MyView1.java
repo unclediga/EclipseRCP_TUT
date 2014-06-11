@@ -13,6 +13,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -32,6 +33,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
@@ -46,6 +48,10 @@ public class MyView1 extends ViewPart {
 	private Action addItemAction;
 	private Action deleteItemAction;
 	private Action selectAllAction;
+
+	private Action actionForMyActionPlugin;
+	
+	
 	
 
 	private IMemento memento;
@@ -117,6 +123,10 @@ public class MyView1 extends ViewPart {
 			}
 
 		});
+		
+		// Тащим Action из плагина MyActionPlugin
+		actionBars.setGlobalActionHandler("MyActionPlugin.as1.action1", actionForMyActionPlugin);
+		
 	}
 
 	private void createContextMenu() {
@@ -190,6 +200,12 @@ public class MyView1 extends ViewPart {
 				updateActionEnablement();
 			}
 		});
+		
+		
+		// Создаём обработчик для Retargable Action из плагина MyActionPlugin
+		actionForMyActionPlugin = new Action1(getSite().getWorkbenchWindow());
+		actionForMyActionPlugin.setText("MyView Action1");
+		
 		
 	}
 
@@ -268,5 +284,23 @@ public class MyView1 extends ViewPart {
 		}
 	};
 
+	
+	class Action1 extends Action {
+		
+		private IWorkbenchWindow window;
+			
+		public Action1(IWorkbenchWindow window) {
+			super();
+			this.window = window;
+		}
+
+		
+		@Override
+			public void run() {
+			MessageDialog.openInformation(window.getShell(), "Action1", "Retargable to MyView handler");
+		}
+	}	
+		
+	
 	
 }

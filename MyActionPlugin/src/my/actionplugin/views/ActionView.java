@@ -3,7 +3,10 @@ package my.actionplugin.views;
 
 import java.util.ArrayList;
 
+import my.actionplugin.actions.Action1;
+
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -22,13 +25,14 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
-import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.ViewPart;
@@ -60,7 +64,7 @@ public class ActionView extends ViewPart {
 	public static final String ID = "my.actionplugin.views.ActionView";
 
 	private TableViewer viewer;
-	private Action action1;
+	private IAction action1;
 	private Action action2;
 	private Action doubleClickAction;
 
@@ -179,15 +183,7 @@ public class ActionView extends ViewPart {
 	}
 
 	private void makeActions() {
-		action1 = new Action() {
-			public void run() {
-				showMessage("Action 1 executed");
-			}
-		};
-		action1.setText("Action 1");
-		action1.setToolTipText("Action 1 tooltip");
-		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+		action1 = new Action1(getSite().getWorkbenchWindow());
 		
 		action2 = new Action() {
 			public void run() {
@@ -241,6 +237,8 @@ public class ActionView extends ViewPart {
 		
 		
 		IActionBars bar = getViewSite().getActionBars();
+		
+		bar.setGlobalActionHandler("MyActionPlugin.as1.action1", action1);
 				
 //		bar.setGlobalActionHandler(ActionFactory.SELECT_ALL.getId(), action3);
 		bar.setGlobalActionHandler(IWorkbenchActionConstants.SELECT_ALL, action3);
@@ -249,6 +247,7 @@ public class ActionView extends ViewPart {
 //		bar.setGlobalActionHandler(IWorkbenchCommandConstants.EDIT_SELECT_ALL, select_all);
 //		bar.setGlobalActionHandler(ActionFactory.SELECT_ALL.getId(), select_all);
 
+		
 		
 		bar.updateActionBars();
 		
@@ -261,6 +260,9 @@ public class ActionView extends ViewPart {
 			}
 		});
 	}
+	
+	
+	
 	private void showMessage(String message) {
 		MessageDialog.openInformation(
 			viewer.getControl().getShell(),
