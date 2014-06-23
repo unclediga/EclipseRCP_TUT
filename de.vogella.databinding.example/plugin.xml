@@ -37,6 +37,12 @@
             name="ViewTable"
             restorable="true">
       </view>
+      <view
+            class="de.vogella.databinding.viewer.ViewMap"
+            id="de.vogella.databinding.example.view4"
+            name="ViewMap"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
@@ -56,6 +62,12 @@
          </view>
          <view
                id="de.vogella.databinding.example.view3"
+               minimized="false"
+               relationship="stack"
+               relative="de.vogella.databinding.example.view">
+         </view>
+         <view
+               id="de.vogella.databinding.example.view4"
                minimized="false"
                relationship="stack"
                relative="de.vogella.databinding.example.view">
