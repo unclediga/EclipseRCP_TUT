@@ -32,6 +32,12 @@
             id="my.views.view2"
             name="MyView2">
       </view>
+      <view
+            class="my.MyDataBindView"
+            id="my.views.view3"
+            name="MyDataBindView"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.popupMenus">

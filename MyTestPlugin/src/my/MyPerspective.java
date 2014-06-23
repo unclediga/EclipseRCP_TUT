@@ -20,16 +20,18 @@ public class MyPerspective implements IPerspectiveFactory {
 //		layout.getViewLayout(MyView2.ID).setCloseable(false);
 		layout.getViewLayout(MyView1.ID).setCloseable(false);
 		IFolderLayout folder = layout.createFolder("messages", IPageLayout.TOP, 0.5f, editorArea);
+
+		folder.addPlaceholder(MyDataBindView.ID+":*");
+		folder.addView(MyDataBindView.ID);
+
 		folder.addPlaceholder(MyView2.ID+":*");
 		folder.addView(MyView2.ID);
 		folder.addView(MyView2.ID);
-		folder.addView(MyView2.ID);
-		folder.addView(MyView2.ID);
 		
-		layout.addShowViewShortcut(IPageLayout.ID_BOOKMARKS);
-        layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
-        layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
-        layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
+//		layout.addShowViewShortcut(IPageLayout.ID_BOOKMARKS);
+//        layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
+//        layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
+//        layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
         
 //		layout.setFixed(true);
 		
