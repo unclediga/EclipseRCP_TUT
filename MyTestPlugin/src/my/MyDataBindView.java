@@ -2,13 +2,39 @@ package my;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+import java.util.List;
 
+import my.model.TestPerson;
+
+import org.eclipse.core.databinding.AggregateValidationStatus;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.beans.PojoProperties;
+import org.eclipse.core.databinding.observable.ChangeEvent;
+import org.eclipse.core.databinding.observable.IChangeListener;
+import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.core.databinding.observable.value.WritableValue;
+import org.eclipse.core.databinding.validation.ValidationStatus;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
+import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+import org.eclipse.jface.databinding.viewers.ViewerSupport;
+import org.eclipse.jface.internal.databinding.swt.SWTVetoableValueDecorator;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -16,12 +42,12 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Scrollable;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.part.ViewPart;
+
 
 public class MyDataBindView extends ViewPart {
 
@@ -39,6 +65,12 @@ public class MyDataBindView extends ViewPart {
 	private TestBean modelBean2;
 	private Label label4;
 	private Text text4;
+	private WritableValue wv;
+	private Text text5;
+	private TestBean modelDecor1;
+	private DataBindingContext bc;
+	private Label statusLabel;
+	private TableViewer tbl;
 
 	public MyDataBindView() {
 		// TODO Auto-generated constructor stub
@@ -48,23 +80,177 @@ public class MyDataBindView extends ViewPart {
 	public void createPartControl(Composite parent) {
 
 		
-		
+		bc = new DataBindingContext();
 		Composite panel = new Composite(parent, SWT.NULL);
 		
-		panel.setLayout(new GridLayout(4, true));
-
+		panel.setLayout(new GridLayout(1, false));
+		
+		
 		// POJO
-		createPOJOWidgets(panel);
-
-
+		Group grp1 = new Group(panel, SWT.SHADOW_ETCHED_IN);
+		grp1.setText("POJO");
+		grp1.setLayout(new GridLayout(4, true));
+		createPOJOWidgets(grp1);
 		bindPOJO();
+		
+		
 			
 		// Beans
-		createBeansWidgets(panel);
-		
+		Group grp2 = new Group(panel, SWT.SHADOW_ETCHED_IN);
+		grp2.setText("Beans");
+		grp2.setLayout(new GridLayout(4, true));
+		createBeansWidgets(grp2);
 		bindBean();
-
+		
+		//Decorator Validator Status messages
+		Group grp3 = new Group(panel, SWT.SHADOW_ETCHED_IN);
+		grp3.setText("Decorator Validator");
+		grp3.setLayout(new GridLayout(4, true));
+		createDecoratorWidgets(grp3);
+		bindDecorator();
+		
+		//Change Listener
+		bindListener();
+		
+		
+		//Table Viewer
+		Group grp4 = new Group(panel, SWT.SHADOW_ETCHED_IN);
+		grp4.setText("Table Viewer");
+		grp4.setLayout(new GridLayout(4, false));
+		grp4.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false,4,2));
+		
+		createTableViewer(grp4);
+		bindTableViewer();
+		
+		
+		
 	}
+
+	private void createTableViewer(Composite parent) {
+		
+		tbl = new TableViewer(parent,SWT.BORDER|SWT.FULL_SELECTION);
+		tbl.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		tbl.getTable().setHeaderVisible(true);
+		TableViewerColumn col1 = new TableViewerColumn(tbl, SWT.NONE);
+		col1.getColumn().setText("ID");
+		col1.getColumn().setWidth(50);
+		TableViewerColumn col2 = new TableViewerColumn(tbl, SWT.NONE);
+		col2.getColumn().setText("fname");
+		col2.getColumn().setWidth(100);
+		TableViewerColumn col3 = new TableViewerColumn(tbl, SWT.NONE);
+		col3.getColumn().setText("lname");
+		col3.getColumn().setWidth(100);
+//		col1.setLabelProvider(new ColumnLabelProvider(){
+//
+//			@Override
+//			public String getText(Object element) {
+//				return ""+((TestPerson)element).getEmpId();
+//			}
+//			
+//		});
+//		col2.setLabelProvider(new ColumnLabelProvider(){
+//
+//			@Override
+//			public String getText(Object element) {
+//				return ((TestPerson)element).getFirstName().toString();
+//
+//			}
+//			
+//		});
+//		col3.setLabelProvider(new ColumnLabelProvider(){
+//			
+//			@Override
+//			public String getText(Object element) {
+//				return ((TestPerson)element).getLastName().toString();
+//				
+//			}
+//			
+//		});
+		
+//		tbl.setContentProvider(new ArrayContentProvider());
+		
+		
+		
+		Button btnTV1 = new Button(parent, SWT.PUSH);
+		btnTV1.setText("Add");
+		btnTV1.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				WritableList lst = (WritableList) tbl.getInput();
+				lst.add(new TestPerson(111, "Assa", "GoodBoy"));
+			}
+			
+		});
+
+		Button btnTV2 = new Button(parent, SWT.PUSH);
+		btnTV2.setText("Del");
+		btnTV2.addSelectionListener(new SelectionAdapter() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				WritableList lst = (WritableList) tbl.getInput();
+				lst.remove(0);
+			}
+			
+		});
+		
+	}
+	
+	private void bindTableViewer() {
+
+		WritableList input = new WritableList(getTblData(), TestPerson.class);
+		
+//	    ViewerSupport.bind(tbl,
+//	            input,
+//	            PojoProperties.values(new String[] { "empId","firstName", "lastName"}));
+
+	    
+	    ObservableListContentProvider contentProvider = new ObservableListContentProvider();
+	    tbl.setContentProvider(contentProvider);
+	    
+	    
+	    
+	    
+	    tbl.setInput(input);
+	}
+
+	private List getTblData() {
+		
+		ArrayList lst = new ArrayList(10);
+		lst.add(new TestPerson(1, "Ivan", "Ivanov"));
+		lst.add(new TestPerson(2, "Petr", "Petrov"));
+		lst.add(new TestPerson(3, "Sidor", "Sidorov"));
+		lst.add(new TestPerson(4, "Grigor", "Grigorov"));
+		return lst;
+	}
+
+	private void bindListener() {
+		
+		IObservableList lst = bc.getBindings();
+		for (Object e : lst) {
+			((Binding) e).getTarget().addChangeListener(new IChangeListener() {
+
+				@Override
+				public void handleChange(ChangeEvent event) {
+					Object object = event.getSource();
+					if(object instanceof SWTVetoableValueDecorator){
+						Widget w  = ((SWTVetoableValueDecorator) object).getWidget();
+						Object v = ((SWTVetoableValueDecorator) object).getValue();
+						 
+						System.out.println("I am listener: widget "+w.getClass());
+						System.out.println("I am listener: val "+v);
+					}else{
+						System.out.println("I am listener: change "+event);
+					}
+
+				}
+			});
+		}
+		
+	}
+	
+	
 
 	private void createBeansWidgets(Composite panel) {
 
@@ -81,7 +267,8 @@ public class MyDataBindView extends ViewPart {
 		butBean1.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Bean:"+modelBean1);
+				System.out.println("Bean1:"+modelBean1);
+				System.out.println("Bean2:"+modelBean2);
 			}
 		});
 		
@@ -99,7 +286,7 @@ public class MyDataBindView extends ViewPart {
 		label4.setLayoutData(new GridData(50, SWT.DEFAULT));
 		
 		text4 = new Text(panel, SWT.BORDER);
-		text4.setText("TEXT1...");
+		text4.setText("TEXT2...");
 		text4.setLayoutData(new GridData(100, SWT.DEFAULT));
 		
 
@@ -112,30 +299,199 @@ public class MyDataBindView extends ViewPart {
 			}
 		});
 		
-		Button butBean4 = new Button(panel, SWT.PUSH);
-		butBean4.setText("SuperBean!!!");
+		final Button butBean4 = new Button(panel, SWT.PUSH);
+		butBean4.setText("set to model2");
 		butBean4.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				modelBean1.setName("SuperBean!!!");
+				if(wv.getValue() == modelBean1){
+					wv.setValue(modelBean2);
+					butBean4.setText("set to model1");
+				}else{
+					wv.setValue(modelBean1);
+					butBean4.setText("set to model2");
+				}
 			}
 		});
 	}
+	private void createDecoratorWidgets(Composite panel) {
+		
+		Label label5 = new Label(panel, SWT.NULL);
+		label5.setText("Telephone:");
+		label5.setLayoutData(new GridData(50, SWT.DEFAULT));
+		
+		text5 = new Text(panel, SWT.BORDER);
+		text5.setText("737-73-73");
+		text5.setLayoutData(new GridData(100, SWT.DEFAULT));
+		
+		Button butDecor1 = new Button(panel, SWT.PUSH);
+		butDecor1.setText("Print Bean Model");
+		butDecor1.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				System.out.println("Decor1:"+modelDecor1);
+			}
+		});
 
+		Button butDecor2 = new Button(panel, SWT.PUSH);
+		butDecor2.setText("737-73-73");
+		butDecor2.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				modelDecor1.setName("7377373");
+			}
+		});
+		
+		//label status
+		statusLabel = new Label(panel, SWT.BORDER);
+		statusLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,4 , 1));
+		statusLabel.setText("Status label");
+		
+	}
+
+	private void bindDecorator() {
+
+		modelDecor1 = new TestBean("Hello from Decor1!!");
+
+		IObservableValue ov1 = WidgetProperties.text(SWT.Modify).observe(text5);
+		IObservableValue dv1 = BeanProperties.value("name").observe(modelDecor1);
+		
+		UpdateValueStrategy us_targ_to_model = new UpdateValueStrategy(){
+
+			@Override
+			public Object convert(Object value) {
+				System.out.println("T:convert1:"+value);
+				StringBuilder builder = new StringBuilder();
+				String str = (String) value;
+				for(int i=0;i<str.length();i++){
+					if(Character.isDigit(str.charAt(i)))
+							builder.append(str.charAt(i));
+				}
+				
+			    
+				System.out.println("T:convert2:"+builder.toString());
+				return builder.toString();
+			}
+
+
+			@Override
+			public IStatus validateAfterConvert(Object value) {
+			    System.out.println("T:validateAfterConvert");
+				return super.validateAfterConvert(value);
+			}
+
+
+			@Override
+			public IStatus validateBeforeSet(Object value) {
+			    System.out.println("T:validateBeforeSet");
+				return super.validateBeforeSet(value);
+			}
+
+
+			@Override
+			public IStatus validateAfterGet(Object value) {
+								
+				System.out.println("validateAfterGet:"+value);
+				String str = (String) value;
+				
+				for(int i=0;i<str.length();i++){
+					if(! (Character.isDigit(str.charAt(i))||str.charAt(i) =='-')){
+						System.out.println("char ("+i+")="+str.charAt(i)+":Not a Num!!!");
+					    return ValidationStatus.error("char ("+i+")="+str.charAt(i)+":Is Not Number!!!");
+					}   
+				}
+				return ValidationStatus.ok();
+			}
+
+			
+		};
+		
+		
+		UpdateValueStrategy us_model_to_targ = new UpdateValueStrategy(){
+			
+			@Override
+			public Object convert(Object value) {
+				
+				System.out.println("M:convert1:"+value);
+				StringBuilder builder = new StringBuilder();
+				String str = (String) value;
+				for(int i=0;i<str.length();i++){
+					switch (i) {
+					case 3:
+					case 5:
+						builder.append('-');
+					default:
+						builder.append(str.charAt(i));
+					}
+				}
+				
+			    
+				System.out.println("M:convert2:"+builder.toString());
+				return builder.toString();
+			}
+			
+			@Override
+			public IStatus validateAfterConvert(Object value) {
+				System.out.println("M:convert2:validateAfterConvert");
+				return super.validateAfterConvert(value);
+			}
+			
+			@Override
+			public IStatus validateAfterGet(Object value) {
+
+				System.out.println("M:validateAfterGet:"+value);
+				String str = (String) value;
+				
+				for(int i=0;i<str.length();i++){
+					if(! (Character.isDigit(str.charAt(i)))){
+						System.out.println("char ("+i+")="+str.charAt(i)+":Not!!!");
+					    return Status.CANCEL_STATUS;
+					}   
+				}
+				return Status.OK_STATUS;
+			}
+			
+			@Override
+			public IStatus validateBeforeSet(Object value) {
+				System.out.println("M:convert2:validateBeforeSet");
+				return super.validateBeforeSet(value);
+			}
+			
+		};
+		
+		
+		
+		
+		Binding bind = bc.bindValue(ov1, dv1,us_targ_to_model,us_model_to_targ);
+
+		// DECORATOR
+		ControlDecorationSupport.create(bind, SWT.TOP|SWT.LEFT);
+		
+		//status label for all status messages in binding context
+		ISWTObservableValue errlab = WidgetProperties.text().observe(statusLabel);
+		bc.bindValue(errlab, new AggregateValidationStatus(bc,AggregateValidationStatus.MAX_SEVERITY ));
+		
+				 
+		
+	}
+	
 	private void bindBean() {
+		
+		wv  = new WritableValue();
+		
 		modelBean1 = new TestBean("Hello from Bean1!!");
 		modelBean2 = new TestBean("Hello from Bean2!!");
 		
-		DataBindingContext bc = new DataBindingContext();
 		
 		IObservableValue ov1 = WidgetProperties.text(SWT.Modify).observe(text3);
 		IObservableValue bv1 = BeanProperties.value("name").observe(modelBean1);
-		
 		bc.bindValue(ov1, bv1);
 		
+		IObservableValue ov2 = WidgetProperties.text(SWT.Modify).observe(text4);
+		IObservableValue bv2 = BeanProperties.value("name").observeDetail(wv);
+		bc.bindValue(ov2, bv2);
 		
-		
-		
+		wv.setValue(modelBean2);
 		
 	}
 
@@ -205,13 +561,13 @@ public class MyDataBindView extends ViewPart {
 		
 		model1 = new TestPOJO("Hello from POJO");
 
-		DataBindingContext bindingContext = new DataBindingContext();
+		bc = new DataBindingContext();
 		IObservableValue ov1 = WidgetProperties.text(SWT.Modify).observe(text1);
 		IObservableValue mv1 = PojoProperties.value("name").observe(model1);
 		IObservableValue ov2 = WidgetProperties.text(SWT.Modify).observe(text2);
 		
-		Binding bind2 = bindingContext.bindValue(ov2, mv1);
-		bind1 = bindingContext.bindValue(ov1, mv1);
+		bc.bindValue(ov2, mv1);
+		bind1 = bc.bindValue(ov1, mv1);
 	}
 
 	@Override
