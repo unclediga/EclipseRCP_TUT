@@ -26,15 +26,14 @@ import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.databinding.viewers.ViewerSupport;
 import org.eclipse.jface.internal.databinding.swt.SWTVetoableValueDecorator;
-import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.internal.databinding.viewers.ObservableCollectionContentProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
-import org.eclipse.jface.viewers.IContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -70,7 +69,9 @@ public class MyDataBindView extends ViewPart {
 	private TestBean modelDecor1;
 	private DataBindingContext bc;
 	private Label statusLabel;
-	private TableViewer tbl;
+	private TableViewer tbl1;
+	private TableViewer tbl2;
+	private List dataList;
 
 	public MyDataBindView() {
 		// TODO Auto-generated constructor stub
@@ -117,7 +118,7 @@ public class MyDataBindView extends ViewPart {
 		Group grp4 = new Group(panel, SWT.SHADOW_ETCHED_IN);
 		grp4.setText("Table Viewer");
 		grp4.setLayout(new GridLayout(4, false));
-		grp4.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false,4,2));
+		grp4.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false,4,1));
 		
 		createTableViewer(grp4);
 		bindTableViewer();
@@ -128,48 +129,25 @@ public class MyDataBindView extends ViewPart {
 
 	private void createTableViewer(Composite parent) {
 		
-		tbl = new TableViewer(parent,SWT.BORDER|SWT.FULL_SELECTION);
-		tbl.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		tbl.getTable().setHeaderVisible(true);
-		TableViewerColumn col1 = new TableViewerColumn(tbl, SWT.NONE);
+		//////////// TABLE 1 ////////////////////////////////////////
+		
+		tbl1 = new TableViewer(parent,SWT.BORDER|SWT.FULL_SELECTION);
+		tbl1.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,4,1));
+		tbl1.getTable().setHeaderVisible(true);
+		TableViewerColumn col1 = new TableViewerColumn(tbl1, SWT.NONE);
 		col1.getColumn().setText("ID");
 		col1.getColumn().setWidth(50);
-		TableViewerColumn col2 = new TableViewerColumn(tbl, SWT.NONE);
+		TableViewerColumn col2 = new TableViewerColumn(tbl1, SWT.NONE);
 		col2.getColumn().setText("fname");
 		col2.getColumn().setWidth(100);
-		TableViewerColumn col3 = new TableViewerColumn(tbl, SWT.NONE);
+		TableViewerColumn col3 = new TableViewerColumn(tbl1, SWT.NONE);
 		col3.getColumn().setText("lname");
 		col3.getColumn().setWidth(100);
-//		col1.setLabelProvider(new ColumnLabelProvider(){
-//
-//			@Override
-//			public String getText(Object element) {
-//				return ""+((TestPerson)element).getEmpId();
-//			}
-//			
-//		});
-//		col2.setLabelProvider(new ColumnLabelProvider(){
-//
-//			@Override
-//			public String getText(Object element) {
-//				return ((TestPerson)element).getFirstName().toString();
-//
-//			}
-//			
-//		});
-//		col3.setLabelProvider(new ColumnLabelProvider(){
-//			
-//			@Override
-//			public String getText(Object element) {
-//				return ((TestPerson)element).getLastName().toString();
-//				
-//			}
-//			
-//		});
-		
-//		tbl.setContentProvider(new ArrayContentProvider());
 		
 		
+		
+		
+		// изменения в списке
 		
 		Button btnTV1 = new Button(parent, SWT.PUSH);
 		btnTV1.setText("Add");
@@ -177,7 +155,8 @@ public class MyDataBindView extends ViewPart {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				WritableList lst = (WritableList) tbl.getInput();
+				// получить самому
+				WritableList lst = (WritableList) tbl1.getInput();
 				lst.add(new TestPerson(111, "Assa", "GoodBoy"));
 			}
 			
@@ -189,30 +168,177 @@ public class MyDataBindView extends ViewPart {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				WritableList lst = (WritableList) tbl.getInput();
+				// Использовать исходный объект бесполезно.
+				// Изменения самого списка dataList отслеживаются только,
+				// если их делать через обёртку WritableList
+				// Изменения в самих объектах списка отслеживаются 
+				// как обычно через BeanProperties
+				
+				// Не пройдёт
+				//dataList.remove(0);
+				
+				// Только так
+				WritableList lst = (WritableList) tbl1.getInput();
 				lst.remove(0);
 			}
 			
 		});
+
+		// изменения в объекте
+		Button btnTV3 = new Button(parent, SWT.PUSH);
+		btnTV3.setText("Vasya");
+		btnTV3.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				IStructuredSelection sel = (IStructuredSelection)tbl1.getSelection();
+				if(!sel.isEmpty()){
+					TestPerson p = (TestPerson) sel.getFirstElement();
+					System.out.println("Set 'Vasya' for "+p);
+					p.setFirstName("Vasya");
+				}
+			}
+			
+		});
+		
+		Button btnTV4 = new Button(parent, SWT.PUSH);
+		btnTV4.setText("print");
+		btnTV4.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				printList(dataList);
+				printList((List) tbl1.getInput());
+				
+			}
+
+			private void printList(List dataList) {
+				System.out.println("List datas for class "+dataList.getClass().getName());
+				for (Object e : dataList) {
+					System.out.println(e);
+				}			}
+			
+		});
+		
+		
+		//////////// TABLE 2 ////////////////////////////////////////
+		
+		tbl2 = new TableViewer(parent,SWT.BORDER|SWT.FULL_SELECTION);
+		tbl2.getControl().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,4,1));
+		tbl2.getTable().setHeaderVisible(true);
+		col1 = new TableViewerColumn(tbl2, SWT.NONE);
+		col1.getColumn().setText("ID");
+		col1.getColumn().setWidth(50);
+		col2 = new TableViewerColumn(tbl2, SWT.NONE);
+		col2.getColumn().setText("fname");
+		col2.getColumn().setWidth(100);
+		col3 = new TableViewerColumn(tbl2, SWT.NONE);
+		col3.getColumn().setText("lname");
+		col3.getColumn().setWidth(100);
+		col1.setLabelProvider(new ColumnLabelProvider(){
+
+			@Override
+			public String getText(Object element) {
+				return ""+((TestPerson)element).getEmpId();
+			}
+			
+		});
+		col2.setLabelProvider(new ColumnLabelProvider(){
+
+			@Override
+			public String getText(Object element) {
+				return ((TestPerson)element).getFirstName().toString();
+
+			}
+			
+		});
+		col3.setLabelProvider(new ColumnLabelProvider(){
+			
+			@Override
+			public String getText(Object element) {
+				return ((TestPerson)element).getLastName().toString();
+				
+			}
+			
+		});
+		
+		
+
+		
+		
+		Button btnTV21 = new Button(parent, SWT.PUSH);
+		btnTV21.setText("Vasya");
+		btnTV21.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				IStructuredSelection sel = (IStructuredSelection)tbl2.getSelection();
+				if(!sel.isEmpty()){
+					TestPerson p = (TestPerson) sel.getFirstElement();
+					System.out.println("Set 'Vasya' for "+p);
+					p.setFirstName("Vasya");
+				}
+			}
+			
+		});
+		
+		Button btnTV22 = new Button(parent, SWT.PUSH);
+		btnTV22.setText("refresh");
+		btnTV22.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				tbl2.refresh();
+			}
+			
+		});
+		
+		Button btnTV23 = new Button(parent, SWT.PUSH);
+		btnTV23.setText("btn3");
+		Button btnTV24 = new Button(parent, SWT.PUSH);
+		btnTV24.setText("btn4");
+		
+		
+		
 		
 	}
 	
 	private void bindTableViewer() {
-
-		WritableList input = new WritableList(getTblData(), TestPerson.class);
 		
-//	    ViewerSupport.bind(tbl,
-//	            input,
-//	            PojoProperties.values(new String[] { "empId","firstName", "lastName"}));
+		dataList = getTblData();
+
+		WritableList input1 = new WritableList(dataList, TestPerson.class);
+		
+	    ViewerSupport.bind(tbl1,
+	            input1,
+	            BeanProperties.values(new String[] { "empId","firstName", "lastName"}));
+//	    ViewerSupport.bind(tbl1,
+//	    		input,
+//	    		PojoProperties.values(new String[] { "empId","firstName", "lastName"}));
+
+	    tbl1.setInput(input1);
 
 	    
+	    
+	    WritableList input2 = new WritableList(dataList, TestPerson.class);
+	    // Следит за списком. Обновляет данные сама.
+	    // если поставили бы ArrayContentProvider(), то приходилось бы
+	    // делать tbl2.refresh() при каждом изменении input2
+	    
+	    //!!!! Чудом работает. Вообще эта штука для ListViewer (см. Vogella JFace Data Binding - Tutorial)
 	    ObservableListContentProvider contentProvider = new ObservableListContentProvider();
-	    tbl.setContentProvider(contentProvider);
+		tbl2.setContentProvider(contentProvider);
+		for (Object e : contentProvider.getKnownElements()) {
+			System.out.println(e);
+			
+		}
+		System.out.println(contentProvider.getKnownElements());
+		
+		//ObservableMapLabelProvider
+		
+		tbl2.setInput(input2);
+		
 	    
-	    
-	    
-	    
-	    tbl.setInput(input);
 	}
 
 	private List getTblData() {
