@@ -6,17 +6,17 @@ Bundle-SymbolicName: org.eclipse.ui.examples.readmetool; singleton:=tr
 Eclipse-LazyStart: true
 Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
  rm/eclipse.platform.ui.git;path="examples/org.eclipse.ui.examples.rea
- dmetool";tag="I20130423-0017";commitId=d1c860b88f7bec51cc54f45f59d999
- 853142d14d
+ dmetool";tag="I20140427-2030";commitId=bc7c5eaf84573cd45d325f0f62f2d5
+ 009d07e6da
 Bundle-Activator: org.eclipse.ui.examples.readmetool.ReadmePlugin
 Require-Bundle: org.eclipse.ui,org.eclipse.core.resources,org.eclipse.
  core.runtime,org.eclipse.ui.views,org.eclipse.ui.ide,org.eclipse.jfac
  e.text,org.eclipse.text,org.eclipse.ui.workbench.texteditor,org.eclip
  se.ui.editors
-Bundle-Version: 3.3.200.v20130417-1252
+Bundle-Version: 3.3.200.v20140423-1455
 Export-Package: org.eclipse.ui.examples.readmetool
 Bundle-ClassPath: readmetool.jar
-Build-Jdk: 1.7.0_11
+Build-Jdk: 1.7.0_51
 Bundle-Vendor: %Plugin.providerName
 Bundle-Name: %Plugin.name
 Archiver-Version: Plexus Archiver
@@ -87,7 +87,7 @@ Name: icons/etool16/action3.gif
 SHA1-Digest: jSrsMM3K2qUE/67faYZykv4rFGA=
 
 Name: readmetool.jar
-SHA1-Digest: p8gewMjRguB99CC00s0lxUeFwPk=
+SHA1-Digest: ZOHspXjTzPhl7iTfCJ5ak38QzQE=
 
 Name: icons/view16/sections.gif
 SHA1-Digest: 84IkVMZuZN1Tf8HX07Bc+Xvycjw=

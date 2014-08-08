@@ -6,14 +6,14 @@ Bundle-SymbolicName: org.eclipse.ui.examples.contributions; singleton:
  =true
 Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
  rm/eclipse.platform.ui.git;path="examples/org.eclipse.ui.examples.con
- tributions";tag="I20130402-0800";commitId=ac8cd02e835171340e42b92f4bc
- 4f2c861c9a2ce
+ tributions";tag="I20140211-1100";commitId=bce7ea01cfb590965f44d702ae0
+ a6f22fe2cc7e3
 Bundle-Activator: org.eclipse.ui.examples.contributions.Activator
 Require-Bundle: org.eclipse.ui;bundle-version="[3.3.0,4.0.0)",org.ecli
  pse.core.runtime,org.eclipse.core.expressions;bundle-version="[3.3.0,
  4.0.0)"
-Bundle-Version: 3.3.100.v20130326-1250
-Build-Jdk: 1.7.0_11
+Bundle-Version: 3.3.100.v20140210-1835
+Build-Jdk: 1.7.0_25
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %contributions.Activator.providerName
 Bundle-Name: %contributions.Activator.name
@@ -25,11 +25,11 @@ Name: org/eclipse/ui/examples/contributions/view/InfoView$ContentProvi
  der.class
 SHA1-Digest: Zv8Oyp5Gb6VWMt2pUNeOYXxILV4=
 
-Name: org/eclipse/ui/examples/contributions/view/InfoView$2.class
-SHA1-Digest: DDMBCjNnrDjgsV8syhtF+XMMQm4=
-
 Name: org/eclipse/ui/examples/contributions/editor/InfoEditor$2.class
 SHA1-Digest: 8bU/oAzWtkdbVZFdqqbDZTGjUn8=
+
+Name: org/eclipse/ui/examples/contributions/view/InfoView$2.class
+SHA1-Digest: DDMBCjNnrDjgsV8syhtF+XMMQm4=
 
 Name: org/eclipse/ui/examples/contributions/rcp/ContributionApplicatio
  n.class
@@ -68,12 +68,12 @@ SHA1-Digest: Lnt4m5yP94+Fh8SfjFkK6XfwZ9E=
 Name: icons/sample2.gif
 SHA1-Digest: yoxjmqMtVphUpFQAd45TKQuy8gU=
 
+Name: icons/new_wiz.gif
+SHA1-Digest: oPC08qQt59LJWyeGE0eAboeBTn4=
+
 Name: org/eclipse/ui/examples/contributions/editor/IntegerTypeConverte
  r.class
 SHA1-Digest: CpBp41M2/Sjx+ke7soc5JwZIj1w=
-
-Name: icons/new_wiz.gif
-SHA1-Digest: oPC08qQt59LJWyeGE0eAboeBTn4=
 
 Name: org/eclipse/ui/examples/contributions/view/RefreshInfoHandler.cl
  ass
@@ -105,11 +105,11 @@ Name: org/eclipse/ui/examples/contributions/editor/ActivateEditorHandl
  er.class
 SHA1-Digest: +mDFjbpu7USsejNrxaJj/Yn9S+c=
 
-Name: org/eclipse/ui/examples/contributions/view/InfoView.class
-SHA1-Digest: H8c5s6WUjWDyyK9QEveb6m4emSU=
-
 Name: org/eclipse/ui/examples/contributions/editor/InfoEditor.class
 SHA1-Digest: ALoK1/hMZ4KxaVY3aurFmtS5U3I=
+
+Name: org/eclipse/ui/examples/contributions/view/InfoView.class
+SHA1-Digest: H8c5s6WUjWDyyK9QEveb6m4emSU=
 
 Name: org/eclipse/ui/examples/contributions/view/AdminHandler.class
 SHA1-Digest: AUSQc5nkYjQmQl/fKrtMLRA96AI=
@@ -129,16 +129,16 @@ SHA1-Digest: CSxUcae0HoB6/hRC70jd2YzJ4Hk=
 Name: plugin.properties
 SHA1-Digest: IqxxF4+Hy2lvX09CqBOomer36bA=
 
+Name: org/eclipse/ui/examples/contributions/rcp/ApplicationWorkbenchWi
+ ndowAdvisor.class
+SHA1-Digest: oMmPP5tw5q20uoqCpQWJdOFM9B0=
+
 Name: org/eclipse/ui/examples/contributions/model/IPersonService.class
 SHA1-Digest: stouk+cBkrjCc5FPkFUMW1myuhc=
 
 Name: org/eclipse/ui/examples/contributions/handlers/InfoAboutHandler.
  class
 SHA1-Digest: 85GzWaTanL+90JURMkqTiKITqLw=
-
-Name: org/eclipse/ui/examples/contributions/rcp/ApplicationWorkbenchWi
- ndowAdvisor.class
-SHA1-Digest: oMmPP5tw5q20uoqCpQWJdOFM9B0=
 
 Name: icons/change_obj.gif
 SHA1-Digest: R8HcObKb0v2GdTsmx2C6Lk5iM7U=

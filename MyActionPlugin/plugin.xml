@@ -90,6 +90,7 @@
             </groupMarker>
          </menu>
          <action
+               class="my.actionplugin.actions.ActionDelegate1"
                icon="icons/chat.gif"
                id="MyActionPlugin.viewActions1.action1"
                label="ViewAction1"
@@ -101,6 +102,7 @@
             </enablement>
          </action>
          <action
+               class="my.actionplugin.actions.ActionDelegate2"
                id="MyActionPlugin.viewActions1.action2"
                label="ViewAction2"
                menubarPath="additions1"
@@ -117,6 +119,7 @@
             id="MyActionPlugin.viewerContribution1"
             targetID="my.actionplugin.views.ActionView">
          <action
+               class="my.actionplugin.actions.PopupDelegat"
                id="MyActionPlugin.popup.action1"
                label="Popup Action1"
                menubarPath="additions">
