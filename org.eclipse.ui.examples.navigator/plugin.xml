@@ -7,6 +7,7 @@
             allowMultiple="false"
             category="org.eclipse.ui.examples.navigator.category"
             class="org.eclipse.ui.navigator.CommonNavigator"
+            icon="icons/filenav_nav.gif"
             id="org.eclipse.ui.examples.navigator.view"
             name="Example View"
             restorable="true">
@@ -62,4 +63,49 @@
       </commonFilter>
    </extension>
 
+  <!-- Phase 2 -->
+  <!-- Declare a content extension that renders the contents of a properties file -->
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.eclipse.ui.examples.navigator.PropertiesContentProvider"
+            icon="icons/prop_ps.gif"
+            id="org.eclipse.ui.examples.navigator.propertiesContent"
+            labelProvider="org.eclipse.ui.examples.navigator.PropertiesLabelProvider"
+            name="Properties File Contents"
+            priority="normal">
+		      <triggerPoints>
+		         	<or>
+			            <and>
+			               <instanceof value="org.eclipse.core.resources.IResource"/>
+			               <test
+			                     forcePluginActivation="true"
+			                     property="org.eclipse.core.resources.extension"
+			                     value="properties"/>
+			            </and>
+						<instanceof value="org.eclipse.ui.examples.navigator.PropertiesTreeData"/>
+					</or>
+		         </triggerPoints>
+		         <possibleChildren>
+		            <or>
+		               <instanceof value="org.eclipse.ui.examples.navigator.PropertiesTreeData"/> 
+		            </or>
+		         </possibleChildren>
+		      </navigatorContent>
+   </extension>
+   <!-- Bind the Properties content extension to the viewer -->
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.examples.navigator.view">
+         <includes>
+            <contentExtension
+                  pattern="org.eclipse.ui.examples.navigator.propertiesContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   
+  
 </plugin>
