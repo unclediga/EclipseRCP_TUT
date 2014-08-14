@@ -129,6 +129,21 @@
          </includes>
       </viewerContentBinding>
    </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.ui.examples.navigator.actions.propertiesResource"
+            objectClass="org.eclipse.ui.examples.navigator.PropertiesTreeData">
+         <action
+               class="org.eclipse.ui.examples.navigator.actions.DeletePropertyAction"
+               enablesFor="1"
+               id="org.eclipse.ui.examples.navigator.actions.deleteProperty"
+               label="Delete Property"
+               menubarPath="group.edit">
+         </action>
+      </objectContribution>
+   </extension>
    
   
 </plugin>
