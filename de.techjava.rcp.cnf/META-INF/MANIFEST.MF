@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test CNF Plug-in
+Bundle-SymbolicName: de.techjava.rcp.cnf;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: de.techjava.rcp.cnf.internal.CNFActivator
+Bundle-Vendor: Simon Zambrovski
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.navigator,
+ org.eclipse.core.expressions
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: de.techjava.rcp.cnf.data
