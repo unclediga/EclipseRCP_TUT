@@ -19,8 +19,31 @@
    </extension>
    <extension
          point="org.eclipse.ui.navigator.viewer">
+<!--      <viewer
+            popupMenuId="org.eclipse.ui.examples.navigator.view#PopupMenu"
+            viewerId="org.eclipse.ui.examples.navigator.view">
+            -->
       <viewer
             viewerId="org.eclipse.ui.examples.navigator.view">
+         <!-- Phase 3 -->
+         <!-- Configuring Menus -->
+         <popupMenu allowsPlatformContributions="true"
+               id="org.eclipse.ui.examples.navigator.view#PopupMenu">
+			<insertionPoint  name="group.new" separator="true" /> 
+			<insertionPoint  name="group.goto"  />
+			<insertionPoint  name="group.open" separator="true" /> 
+			<insertionPoint  name="group.openWith"  />
+			<insertionPoint  name="group.edit" separator="true" /> 
+			<insertionPoint  name="group.show" separator="true"  />
+			<insertionPoint  name="group.reorganize"  />
+			<insertionPoint  name="group.port" separator="true" /> 
+			<insertionPoint  name="group.generate" separator="true" /> 
+			<insertionPoint  name="group.search" separator="true"  />
+			<insertionPoint  name="group.build" separator="true"  />
+			<insertionPoint  name="additions" separator="true"  />
+			<insertionPoint  name="group.properties" separator="true"  />                
+         </popupMenu>
+         <!-- Phase 3 -->
       </viewer>
       <viewerContentBinding
             viewerId="org.eclipse.ui.examples.navigator.view">
