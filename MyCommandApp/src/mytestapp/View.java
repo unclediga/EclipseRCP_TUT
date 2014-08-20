@@ -1,6 +1,9 @@
 package mytestapp;
 
-import org.eclipse.jface.action.IContributionItem;
+import mytestapp.contr.RemoveFavoritesContributionItem;
+
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -12,7 +15,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
@@ -77,23 +79,14 @@ public class View extends ViewPart {
 		// Без этого невозможно вставить пункт popup меню 
 		// через точку расширения "menuContribute"
 		MenuManager menuManager = new MenuManager();
-	    menuManager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+        menuManager.setRemoveAllWhenShown(true);
+	    menuManager.addMenuListener(new IMenuListener() {
+	         public void menuAboutToShow(IMenuManager m) {
+	            View.this.fillContextMenu(m);
+	         }
+	      });
+
 	    Menu menu = menuManager.createContextMenu(viewer.getTable());
-
-
-	    
-	    System.out.println("contr items..,.");
-	    IContributionItem[] cis = menuManager.getItems();
-	    for(IContributionItem ci:cis){
-	    	System.out.println(""+ci.getId());
-	    }
-	    
-	    
-    	System.out.println("menus..,.");
-	    MenuItem[] mis = menu.getItems();
-	    for(MenuItem mi:mis){
-	    	System.out.println(""+mi.getText());
-	    }
 	    
 	    viewer.getTable().setMenu(menu);
 	    getSite().registerContextMenu(menuManager, viewer);
@@ -103,6 +96,19 @@ public class View extends ViewPart {
 	    getSite().setSelectionProvider(viewer);
 		
 	}
+	
+	
+	
+
+	protected void fillContextMenu(IMenuManager m) {
+	      m.add(new Separator("edit"));
+	      m.add(new RemoveFavoritesContributionItem(getViewSite(), null));
+	      m.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+		
+	}
+
+
+
 
 	/**
 	 * Passing the focus request to the viewer's control.

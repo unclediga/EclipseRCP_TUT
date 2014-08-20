@@ -72,7 +72,7 @@
       </command>
       <command
             id="MyCommandApp.command4"
-            name="show selection">
+            name="Show Selection">
       </command>
    </extension>
    <extension
@@ -106,17 +106,36 @@
             allPopups="false"
             locationURI="popup:org.eclipse.ui.popup.any">
          <command
-               commandId="MyCommandApp.command3"
-               label="pop up 3 (popup.any)"
+               commandId="MyCommandApp.command1"
+               label="pop up 1 (popup.any)"
                style="push">
          </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="popup:org.eclipse.ui.popup.any?after=&quot;additions&quot;">
+            locationURI="popup:org.eclipse.ui.popup.any?before=edit">
          <command
-               commandId="MyCommandApp.command3"
-               label="pop up 3 (popup.any + additions)"
+               commandId="MyCommandApp.command1"
+               label="pop up 1 (popup.any + before edit)"
+               style="push">
+         </command>
+         <command
+               commandId="MyCommandApp.command2"
+               label="pop up 2 (popup.any + before edit)"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:MyCommandApp.view?endof=edit">
+         <command
+               commandId="MyCommandApp.command1"
+               label="pop up 1 (popup.view + endof edit)"
+               style="push">
+         </command>
+         <command
+               commandId="MyCommandApp.command2"
+               label="pop up 2 (popup.view + endof edit)"
                style="push">
          </command>
       </menuContribution>
@@ -159,7 +178,7 @@
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="popup:MyCommandApp.view?before=&quot;additions&quot;">
+            locationURI="popup:MyCommandApp.view?before=additions">
          <command
                commandId="MyCommandApp.command3"
                label="popup cmd3 (before additions)"
