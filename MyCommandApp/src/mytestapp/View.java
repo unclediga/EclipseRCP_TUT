@@ -73,7 +73,7 @@ public class View extends ViewPart {
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		// Provide the input to the ContentProvider
-		viewer.setInput(new String[] {"One", "Two", "Three"});
+		viewer.setInput(new String[] {"One", "Two", "Three","Four","Five"});
 		
 		
 		// Ѕез этого невозможно вставить пункт popup меню 

@@ -11,13 +11,16 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-public class ShowSelectedHandler extends AbstractHandler {
+public abstract class ShowSelected extends AbstractHandler {
+
+	private StringBuffer res;
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		StringBuffer res = new StringBuffer("Count selected : ");
-		Shell shell = HandlerUtil.getActiveShell(event);
+
+		res = new StringBuffer("Count selected : \n");
+		
 		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
 				.getActivePage().getSelection();
 		if (selection != null & selection instanceof IStructuredSelection) {
@@ -28,9 +31,13 @@ public class ShowSelectedHandler extends AbstractHandler {
 				res.append(element.toString()+"\n");
 			}
 		}
-		MessageDialog.openInformation(shell, "Ñ÷¸ò", res.toString());
-		
 		return null;
 	}
+
+	public String getResult() {
+		return res.toString();
+	}
+	
+	
 
 }
