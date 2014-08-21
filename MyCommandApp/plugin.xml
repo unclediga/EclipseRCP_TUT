@@ -88,6 +88,7 @@
                style="push">
          </command>
          <menu
+               id="MyCommandApp.MyMenu"
                label="My Menu">
             <command
                   commandId="MyCommandApp.command1"
@@ -97,6 +98,10 @@
                   commandId="MyCommandApp.command2"
                   style="push">
             </command>
+            <separator
+                  name="separator1"
+                  visible="true">
+            </separator>
             <command
                   commandId="org.eclipse.ui.edit.delete"
                   style="push">
@@ -106,6 +111,11 @@
                commandId="org.eclipse.ui.help.aboutAction"
                style="push">
          </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="mytestapp.runtimecommands.DefineCommands"
+            locationURI="menu:MyCommandApp.MyMenu?after=separator1">
       </menuContribution>
    </extension>
    <extension
