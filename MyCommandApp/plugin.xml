@@ -97,7 +97,15 @@
                   commandId="MyCommandApp.command2"
                   style="push">
             </command>
+            <command
+                  commandId="org.eclipse.ui.edit.delete"
+                  style="push">
+            </command>
          </menu>
+         <command
+               commandId="org.eclipse.ui.help.aboutAction"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -234,6 +242,10 @@
                   definitionId="MyCommandApp.definition.ManyElementsSelected">
             </reference>
                     </activeWhen>
+      </handler>
+      <handler
+            class="mytestapp.handler.DeleteHandler"
+            commandId="org.eclipse.ui.edit.delete">
       </handler>
    </extension>
    <extension
