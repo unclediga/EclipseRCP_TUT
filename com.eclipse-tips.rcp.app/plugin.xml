@@ -184,7 +184,15 @@
 		               name="org.eclipse.ui.commands.radioStateParameter" 
 		               value="right"> 
 		         </parameter> 
-			  </command>     
+			  </command>
+        <separator
+              name="separator2"
+              visible="true">
+        </separator>
+        <command
+              commandId="com.eclipse-tips.showState"
+              style="push">
+        </command>     
            </menu>
       </menuContribution>
    </extension>
@@ -221,7 +229,12 @@
 		         class="org.eclipse.ui.handlers.RadioState:left" 
 		         id="org.eclipse.ui.commands.radioState"> 
 		   </state> 
-		</command>      
+		</command>
+  <command
+        defaultHandler="com.eclipse_tips.commandstate.ShowStateHandler"
+        id="com.eclipse-tips.showState"
+        name="Show State">
+  </command>      
    </extension>
 
 </plugin>
