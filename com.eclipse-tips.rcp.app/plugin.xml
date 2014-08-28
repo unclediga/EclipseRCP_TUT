@@ -154,7 +154,38 @@
                   label="Italic"
                   style="toggle">
             </command>
-         </menu>
+            <separator
+                  name="separator1"
+                  visible="true">
+            </separator>
+			<command 
+            commandId="com.eclipse-tips.commandState.alignCommand" 
+            label="Align Left" 
+            style="radio"> 
+	         <parameter 
+	               name="org.eclipse.ui.commands.radioStateParameter" 
+	               value="left"> 
+	         </parameter> 
+		      </command> 
+		      <command 
+		            commandId="com.eclipse-tips.commandState.alignCommand" 
+		            label="Align Center" 
+		            style="radio"> 
+		         <parameter 
+		               name="org.eclipse.ui.commands.radioStateParameter" 
+		               value="center"> 
+		         </parameter> 
+		      </command> 
+		      <command 
+		            commandId="com.eclipse-tips.commandState.alignCommand" 
+		            label="Align Right" 
+		            style="radio"> 
+		         <parameter 
+		               name="org.eclipse.ui.commands.radioStateParameter" 
+		               value="right"> 
+		         </parameter> 
+			  </command>     
+           </menu>
       </menuContribution>
    </extension>
    <extension
@@ -177,6 +208,20 @@
                id="org.eclipse.ui.commands.toggleState">
          </state>
       </command>
+		<command 
+		      defaultHandler="com.eclipse_tips.commandstate.AlignHandler" 
+		      id="com.eclipse-tips.commandState.alignCommand" 
+		      name="Align Command"> 
+		   <commandParameter 
+		         id="org.eclipse.ui.commands.radioStateParameter" 
+		         name="State" 
+		         optional="false"> 
+		   </commandParameter> 
+		   <state 
+		         class="org.eclipse.ui.handlers.RadioState:left" 
+		         id="org.eclipse.ui.commands.radioState"> 
+		   </state> 
+		</command>      
    </extension>
 
 </plugin>
