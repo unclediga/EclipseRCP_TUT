@@ -17,4 +17,8 @@ http://blog.eclipse-tips.com/2009/02/commands-part-5-authentication-in-rcp.html
 До конца не разобрался.
 
 
-   
+Commands Part 6: Toggle & Radio menu contributions
+http://blog.eclipse-tips.com/2009/03/commands-part-6-toggle-radio-menu.html
+
+Как создавать меню с флажками и радио-переключателями.
+Размещаем пример в пункте меню "Format".   
