@@ -32,6 +32,7 @@ public class CustomProjectNewWizard extends Wizard implements INewWizard {
 		super.addPages();
 		_pageOne = new WizardNewProjectCreationPage(PAGE_NAME);
 		_pageOne.setTitle(NewWizardMessages.CustomProjectNewWizard_Custom_Plugin_Project);
+		_pageOne.setDescription(NewWizardMessages.CustomProjectNewWizard_Test);
 		_pageOne.setDescription(NewWizardMessages.CustomProjectNewWizard_Create_something_custom);
 		
 		addPage(_pageOne);
