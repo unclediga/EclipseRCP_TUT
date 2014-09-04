@@ -14,3 +14,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.navigator.resources
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Export-Package: customplugin.natures,
+ customplugin.projects

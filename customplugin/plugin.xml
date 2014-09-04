@@ -10,6 +10,7 @@
       <wizard
             category="customplugin.category.wizards"
             class="customplugin.wizards.CustomProjectNewWizard"
+            finalPerspective="customplugin.perspective"
             id="customplugin.wizard.new.custom"
             name="Custom Project">
       </wizard>
@@ -70,6 +71,15 @@
                relative="org.eclipse.ui.editorss">
          </view>
       </perspectiveExtension>
+   </extension>
+   <extension
+         id="customplugin.projectNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="customplugin.natures.ProjectNature">
+         </run>
+      </runtime>
    </extension>
 
 </plugin>
