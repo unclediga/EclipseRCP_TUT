@@ -11,51 +11,16 @@
             category="customplugin.category.wizards"
             class="customplugin.wizards.CustomProjectNewWizard"
             finalPerspective="customplugin.perspective"
+            icon="icons/project-folder.png"
             id="customplugin.wizard.new.custom"
             name="Custom Project">
       </wizard>
    </extension>
    <extension
-         point="org.eclipse.ui.views">
-      <view
-            class="org.eclipse.ui.navigator.CommonNavigator"
-            icon="icons/sample.gif"
-            id="customplugin.navigator"
-            name="Custom Plug-in Navigator">
-      </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.navigator.viewer">
-      <viewerActionBinding
-            viewerId="customplugin.navigator">
-         <includes>
-            <actionExtension
-                  pattern="org.eclipse.ui.navigator.resources.*">
-            </actionExtension>
-         </includes>
-      </viewerActionBinding>
-      <viewerContentBinding
-            viewerId="customplugin.navigator">
-         <includes>
-            <contentExtension
-                  pattern="org.eclipse.ui.navigator.resourceContent">
-            </contentExtension>
-            <contentExtension
-                  pattern="org.eclipse.ui.navigator.resources.filters.*">
-            </contentExtension>
-            <contentExtension
-                  pattern="org.eclipse.ui.navigator.resources.linkHelper">
-            </contentExtension>
-            <contentExtension
-                  pattern="org.eclipse.ui.navigator.resources.workingSets">
-            </contentExtension>
-         </includes>
-      </viewerContentBinding>
-   </extension>
-   <extension
          point="org.eclipse.ui.perspectives">
       <perspective
             class="customplugin.perspectives.Perspective"
+            icon="icons/perspective.png"
             id="customplugin.perspective"
             name="Custom Plug-in Perspective">
       </perspective>
@@ -65,8 +30,9 @@
       <perspectiveExtension
             targetID="customplugin.perspective">
          <view
-               id="customplugin.navigator"
+               id="customnavigator.navigator"
                minimized="false"
+               ratio="0.25"
                relationship="left"
                relative="org.eclipse.ui.editorss">
          </view>

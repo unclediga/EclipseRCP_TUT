@@ -15,8 +15,10 @@ import customplugin.natures.ProjectNature;
 
 public class CustomProjectSupport {
     /**
-     * For this marvelous project we need to: - create the default Eclipse
-     * project - add the custom project nature - create the folder structure
+     * For this marvelous project we need to:
+     * - create the default Eclipse project
+     * - add the custom project nature
+     * - create the folder structure
      * 
      * @param projectName
      * @param location
@@ -31,7 +33,10 @@ public class CustomProjectSupport {
         try {
             addNature(project);
 
-            String[] paths = { "parent/child1-1/child2", "parent/child1-2/child2/child3" }; //$NON-NLS-1$ //$NON-NLS-2$
+            String[] paths = {
+                    "schema", //$NON-NLS-1$
+                    "deployment-files/java", //$NON-NLS-1$
+                    "clause/java/source/hidden-clause"}; //$NON-NLS-1$
             addToProjectStructure(project, paths);
         } catch (CoreException e) {
             e.printStackTrace();

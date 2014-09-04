@@ -19,8 +19,19 @@ public class NewWizardMessages extends NLS {
 обращения из файла messages.properties.
 Попробовал на "Test"
 
+-------------------------------
+* Writing an Eclipse Plug-in (Part 4): Create a Custom Project in Eclipse – New Project Wizard: the Behavior
+Тесты добавили. У меня что-то пока не проходит :((
+-------------------------------
+* Writing an Eclipse Plug-in (Part 5): Adding Icons and A New Project Structure
 
+What did we do this time around?
 
+Added icons to the Custom Project and Custom Perspective.
+Created a default folder structure at project creation.
+Created a new plug-in and add a custom navigator to it.
+Removed the custom navigator from the customplugin.
+Integrated the custom navigator with the original plug-in.
 
 
 
