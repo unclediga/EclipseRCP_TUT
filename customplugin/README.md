@@ -39,7 +39,7 @@ public class NewWizardMessages extends NLS {
     System.arraycopy(prevNatures, 0, newNatures, 0, prevNatures.length);
     newNatures[prevNatures.length] = ProjectNature.NATURE_ID;
 ```
-
+- В комментах мужику обясняют, как добавить в меню _New..._ пункт _Custom Project_.
 
 -------------------------------
 **Writing an Eclipse Plug-in (Part 5): Adding Icons and A New Project Structure**
@@ -58,7 +58,17 @@ What did we do this time around?
 Воспользовавшись свойствами _Nature_ нашего проекта, сделали так, в корень дерева
 отображался собственной иконкой _project_folder.png_.
 
- 
+----------------------------------
+**Writing an Eclipse Plug-in (Part 7): Creating a Custom Navigator**
+
+Добрался таки!
+
+- зачем-то создали view-категорию в _customnavigator_
+- сделали иконку для _customnavigator_ (из _perspective.png_)
+- В _customnavigator_ посмотрели, как можно с помощью мастера externalize strings в `OSGI-INF/I10n/bundle.properties`.
+-  
+
+  
 
 
 

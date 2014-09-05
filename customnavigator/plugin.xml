@@ -4,11 +4,16 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            class="org.eclipse.ui.navigator.CommonNavigator"
-            icon="icons/sample.gif"
+            category="customnavigator.category"
+            class="customnavigator.navigator.CustomNavigator"
+            icon="icons/navigator.png"
             id="customnavigator.navigator"
-            name="Custom Plug-in Navigator">
+            name="%view.name">
       </view>
+      <category
+            id="customnavigator.category"
+            name="%category.name">
+      </category>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.viewer">
@@ -24,19 +29,29 @@
             viewerId="customnavigator.navigator">
          <includes>
             <contentExtension
-                  pattern="org.eclipse.ui.navigator.resourceContent">
+                  pattern="org.eclipse.ui.navigator.resources.filters.workingSet">
             </contentExtension>
             <contentExtension
-                  pattern="org.eclipse.ui.navigator.resources.filters.*">
-            </contentExtension>
-            <contentExtension
-                  pattern="org.eclipse.ui.navigator.resources.linkHelper">
-            </contentExtension>
-            <contentExtension
-                  pattern="org.eclipse.ui.navigator.resources.workingSets">
+                  pattern="customnavigator.navigatorContent">
             </contentExtension>
          </includes>
       </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            contentProvider="customnavigator.navigator.ContentProvider"
+            id="customnavigator.navigatorContent"
+            labelProvider="customnavigator.navigator.LabelProvider"
+            name="Custom Navigator Content">
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="customnavigator.navigator.CustomProjectWorkbenchRoot">
+               </instanceof>
+            </or>
+         </triggerPoints>
+      </navigatorContent>
    </extension>
 
 </plugin>
