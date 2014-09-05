@@ -52,7 +52,13 @@ What did we do this time around?
 - Removed the custom navigator from the customplugin.
 - Integrated the custom navigator with the original plug-in.
 
+--------------------------------
+**Writing an Eclipse Plug-in (Part 6): Adding an Icon To New Project Types**
 
+Воспользовавшись свойствами _Nature_ нашего проекта, сделали так, в корень дерева
+отображался собственной иконкой _project_folder.png_.
+
+ 
 
 
 

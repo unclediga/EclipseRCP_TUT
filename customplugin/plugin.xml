@@ -5,7 +5,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="customplugin.category.wizards"
-            name="Customs Wizards">
+            name="Custom Wizards">
       </category>
       <wizard
             category="customplugin.category.wizards"
@@ -46,6 +46,14 @@
                class="customplugin.natures.ProjectNature">
          </run>
       </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/project-folder.png"
+            id="customplugin.natureImage"
+            natureId="customplugin.projectNature">
+      </image>
    </extension>
 
 </plugin>
