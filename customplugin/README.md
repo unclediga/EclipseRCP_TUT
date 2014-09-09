@@ -70,10 +70,18 @@ What did we do this time around?
 
 -----------------------------------
 **Writing an Eclipse Plug-in (Part 8): Common Navigator: Adding a New Sorter Under navigatorContent**
+
 - Добавил сортировщик для имён категорий, чтоб был порядок Tables->Views->Filters
 - Чутка зарефакторили пару классов.
 
-  
+------------------------------------
+**Writing an Eclipse Plug-in (Part 9): Custom Project: Defining a Custom File Type**
+
+- Создали свои типы файлов, на основе встроенного в Eclipse xml-типа. По расширению *.xml и содержимому Eclipse определяет, что эти файлики относятся к нашему проекту.
+- Ну ещё вынесли оставшиеся строковые константы с помощью Визирда в отдельный properties-файл.
+
+
+
 
 
 

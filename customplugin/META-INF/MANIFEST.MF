@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Customplugin
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: customplugin;singleton:=true
 Bundle-Version: 1.0.0.1
 Bundle-Activator: customplugin.Activator

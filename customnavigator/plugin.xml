@@ -43,7 +43,7 @@
             contentProvider="customnavigator.navigator.ContentProvider"
             id="customnavigator.navigatorContent"
             labelProvider="customnavigator.navigator.LabelProvider"
-            name="Custom Navigator Content">
+            name="%navigatorContent.name">
          <triggerPoints>
             <or>
                <instanceof

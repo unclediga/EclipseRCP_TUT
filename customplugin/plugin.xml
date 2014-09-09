@@ -5,7 +5,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="customplugin.category.wizards"
-            name="Custom Wizards">
+            name="%category.name">
       </category>
       <wizard
             category="customplugin.category.wizards"
@@ -13,7 +13,7 @@
             finalPerspective="customplugin.perspective"
             icon="icons/project-folder.png"
             id="customplugin.wizard.new.custom"
-            name="Custom Project">
+            name="%wizard.name">
       </wizard>
    </extension>
    <extension
@@ -22,7 +22,7 @@
             class="customplugin.perspectives.Perspective"
             icon="icons/perspective.png"
             id="customplugin.perspective"
-            name="Custom Plug-in Perspective">
+            name="%perspective.name">
       </perspective>
    </extension>
    <extension
@@ -54,6 +54,38 @@
             id="customplugin.natureImage"
             natureId="customplugin.projectNature">
       </image>
+   </extension>
+   <extension
+         id="customplugin.contenttype"
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            file-extensions="xml"
+            id="customplugin.contenttype.schema"
+            name="%content-type.name"
+            priority="normal">
+         <describer
+               class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+            <parameter
+                  name="element"
+                  value="hc-schema">
+            </parameter>
+         </describer>
+      </content-type>
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            file-extensions="xml"
+            id="customplugin.contenttype.deployment"
+            name="%content-type.name.0"
+            priority="normal">
+         <describer
+               class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+            <parameter
+                  name="element"
+                  value="hc-deployment">
+            </parameter>
+         </describer>
+      </content-type>
    </extension>
 
 </plugin>
