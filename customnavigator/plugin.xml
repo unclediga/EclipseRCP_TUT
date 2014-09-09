@@ -51,6 +51,17 @@
                </instanceof>
             </or>
          </triggerPoints>
+         <commonSorter
+               class="customnavigator.sorter.SchemaCategorySorter"
+               id="customnavigator.sorter.schemacategorysorter">
+            <parentExpression>
+               <or>
+                  <instanceof
+                        value="customnavigator.navigator.CustomProjectSchema">
+                  </instanceof>
+               </or>
+            </parentExpression>
+         </commonSorter>
       </navigatorContent>
    </extension>
 

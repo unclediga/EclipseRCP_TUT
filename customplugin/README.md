@@ -68,6 +68,11 @@ What did we do this time around?
 - В _customnavigator_ посмотрели, как можно с помощью мастера externalize strings в `OSGI-INF/I10n/bundle.properties`.
 -  
 
+-----------------------------------
+**Writing an Eclipse Plug-in (Part 8): Common Navigator: Adding a New Sorter Under navigatorContent**
+- Добавил сортировщик для имён категорий, чтоб был порядок Tables->Views->Filters
+- Чутка зарефакторили пару классов.
+
   
 
 

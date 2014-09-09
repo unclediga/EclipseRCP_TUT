@@ -16,7 +16,8 @@ import customnavigator.Activator;
  */
 public class CustomProjectSchemaFilters implements ICustomProjectElement {
 
-    private ICustomProjectElement _parent;
+	public static final String NAME = "Filters";
+	private ICustomProjectElement _parent;
     private Image _image;
     private ICustomProjectElement[] _children;
 
@@ -37,7 +38,7 @@ public class CustomProjectSchemaFilters implements ICustomProjectElement {
     }
 
     public String getText() {
-        return "Filters";
+        return NAME;
     }
 
     @Override

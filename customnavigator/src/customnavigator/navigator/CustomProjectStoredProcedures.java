@@ -16,7 +16,8 @@ import customnavigator.Activator;
  */
 public class CustomProjectStoredProcedures implements ICustomProjectElement {
 
-    private ICustomProjectElement _parent;
+    public static final String NAME = "Stored Procedures";
+	private ICustomProjectElement _parent;
     private Image _image;
     private ICustomProjectElement[] _children;
 
@@ -35,7 +36,7 @@ public class CustomProjectStoredProcedures implements ICustomProjectElement {
 
     @Override
     public String getText() {
-        return "Stored Procedures";
+        return NAME;
     }
 
     @Override

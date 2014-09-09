@@ -16,7 +16,8 @@ import customnavigator.Activator;
  */
 public class CustomProjectSchemaViews implements ICustomProjectElement {
 
-    private ICustomProjectElement _parent;
+	public static final String NAME = "Views";
+	private ICustomProjectElement _parent;
     private Image _image;
     private ICustomProjectElement[] _children;
 
@@ -37,7 +38,7 @@ public class CustomProjectSchemaViews implements ICustomProjectElement {
     }
 
     public String getText() {
-        return "Views";
+        return NAME;
     }
 
     @Override
