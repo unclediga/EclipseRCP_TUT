@@ -1,17 +1,13 @@
 package customplugin.wizards;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
-import customplugin.Activator;
+import org.eclipse.ui.ide.IDE;
 
 public class CustomProjectNewDeploymentFile extends Wizard implements
 		INewWizard {
@@ -40,6 +36,13 @@ public class CustomProjectNewDeploymentFile extends Wizard implements
 		boolean result = false;
 		IFile file = _page.createNewFile();
 		result = file != null;
+		
+		try {
+			IDE.openEditor(_workbench.getActiveWorkbenchWindow().getActivePage(), file);
+		} catch (PartInitException e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 
