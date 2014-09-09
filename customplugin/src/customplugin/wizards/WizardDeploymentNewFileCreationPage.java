@@ -11,12 +11,14 @@ import customplugin.Activator;
 public class WizardDeploymentNewFileCreationPage extends
 		WizardNewFileCreationPage {
 
-	public WizardDeploymentNewFileCreationPage(IStructuredSelection selection) {
-		super("Custom Plug-in Deployment File Wizard", selection);
+	private static final String PAGE_NAME = "Custom Plug-in Deployment File Wizard"; //$NON-NLS-1$
 
-		setTitle("Deployment File Wizard");
-		setDescription("Create a Deployment File");
-		setFileExtension("xml");
+	public WizardDeploymentNewFileCreationPage(IStructuredSelection selection) {
+		super(PAGE_NAME, selection);
+
+		setTitle(NewWizardMessages.WizardDeploymentNewFileCreationPage_Deployment_File_Wizard);
+		setDescription(NewWizardMessages.WizardDeploymentNewFileCreationPage_Create_a_Deployment_File);
+		setFileExtension(NewWizardMessages.WizardDeploymentNewFileCreationPage_Deployment_File_Extension);
 
 	}
 
@@ -25,7 +27,7 @@ public class WizardDeploymentNewFileCreationPage extends
 
 		InputStream inputStream = null;
 
-		String templateFilePath = "templates/deployment-template.xml";
+		String templateFilePath = NewWizardMessages.WizardDeploymentNewFileCreationPage_Deployment_Template_Location;
 		try {
 			inputStream = Activator.getDefault().getBundle()
 					.getEntry(templateFilePath).openStream();

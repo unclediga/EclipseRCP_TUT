@@ -12,12 +12,13 @@ import org.eclipse.ui.ide.IDE;
 public class CustomProjectNewDeploymentFile extends Wizard implements
 		INewWizard {
 
+	private static final String WIZARD_NAME = "New Deployment File";
 	private IWorkbench _workbench;
 	private IStructuredSelection _selection;
 	private WizardNewFileCreationPage _page;
 
 	public CustomProjectNewDeploymentFile() {
-		setWindowTitle("New Deployment File");
+		setWindowTitle(WIZARD_NAME);
 	}
 
 	@Override

@@ -11,12 +11,13 @@ import org.eclipse.ui.ide.IDE;
 
 public class CustomProjectNewSchemaFile extends Wizard implements INewWizard {
 
+	private static final String WIZARD_NAME = "New Schema File";
 	private IWorkbench _workbench;
 	private IStructuredSelection _selection;
 	private WizardNewFileCreationPage _pageOne;
 
 	public CustomProjectNewSchemaFile() {
-		setWindowTitle("New Schema File");
+		setWindowTitle(WIZARD_NAME);
 	}
 
 	@Override

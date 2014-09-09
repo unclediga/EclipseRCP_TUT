@@ -95,7 +95,7 @@
             descriptionImage="icons/schema-file_32x32.png"
             icon="icons/schema-file_16x16.png"
             id="customplugin.wizard.file.schema"
-            name="Schema File">
+            name="%wizard.name.schema">
       </wizard>
       <wizard
             category="customplugin.category.wizards"
@@ -103,7 +103,7 @@
             descriptionImage="icons/deployment-file_32x32.png"
             icon="icons/deployment-file_16x16.png"
             id="customplugin.wizard.file.deployment"
-            name="Deployment File">
+            name="%wizard.name.deployment">
       </wizard>
    </extension>
 

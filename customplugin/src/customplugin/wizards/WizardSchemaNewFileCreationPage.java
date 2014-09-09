@@ -19,19 +19,21 @@ import customplugin.Activator;
  */
 public class WizardSchemaNewFileCreationPage extends WizardNewFileCreationPage {
 
+	private static final String PAGE_NAME = "Custom Plug-in Schema File Wizard"; //$NON-NLS-1$
+
 	public WizardSchemaNewFileCreationPage(IStructuredSelection selection) {
 
-		super("Custom Plug-in Schema File Wizard", selection);
+		super(PAGE_NAME, selection);
 
-		setTitle("Schema File Wizard");
-		setDescription("Create a Schema File");
-		setFileExtension("xml");
+		setTitle(NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_File_Wizard);
+		setDescription(NewWizardMessages.WizardSchemaNewFileCreationPage_Create_a_Schema_File);
+		setFileExtension(NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_File_Extension); 
 	}
 
 	@Override
 	protected InputStream getInitialContents() {
 		
-		String templateFilePath = "/templates/schema-template.xml";
+		String templateFilePath = NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_Template_Location;
         InputStream inputStream = null;
 		try {
 			inputStream = Activator.getDefault().getBundle().getEntry(templateFilePath).openStream();
