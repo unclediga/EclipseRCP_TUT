@@ -87,5 +87,24 @@
          </describer>
       </content-type>
    </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="customplugin.category.wizards"
+            class="customplugin.wizards.CustomProjectNewSchemaFile"
+            descriptionImage="icons/schema-file_32x32.png"
+            icon="icons/schema-file_16x16.png"
+            id="customplugin.wizard.file.schema"
+            name="Schema File">
+      </wizard>
+      <wizard
+            category="customplugin.category.wizards"
+            class="customplugin.wizards.CustomProjectNewDeploymentFile"
+            descriptionImage="icons/deployment-file_32x32.png"
+            icon="icons/deployment-file_16x16.png"
+            id="customplugin.wizard.file.deployment"
+            name="Deployment File">
+      </wizard>
+   </extension>
 
 </plugin>
