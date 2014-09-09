@@ -15,7 +15,7 @@ public class CustomProjectNewDeploymentFile extends Wizard implements
 	private static final String WIZARD_NAME = "New Deployment File";
 	private IWorkbench _workbench;
 	private IStructuredSelection _selection;
-	private WizardNewFileCreationPage _page;
+	private WizardNewFileCreationPage _pageOne;
 
 	public CustomProjectNewDeploymentFile() {
 		setWindowTitle(WIZARD_NAME);
@@ -25,26 +25,31 @@ public class CustomProjectNewDeploymentFile extends Wizard implements
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_workbench = workbench;
 		_selection = selection;
-
-		_page = new WizardDeploymentNewFileCreationPage(_selection);
-		addPage(_page);
-
 	}
 
 	@Override
 	public boolean performFinish() {
 
 		boolean result = false;
-		IFile file = _page.createNewFile();
+		IFile file = _pageOne.createNewFile();
 		result = file != null;
-		
+
 		try {
-			IDE.openEditor(_workbench.getActiveWorkbenchWindow().getActivePage(), file);
+			IDE.openEditor(_workbench.getActiveWorkbenchWindow()
+					.getActivePage(), file);
 		} catch (PartInitException e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
+	}
+
+	@Override
+	public void addPages() {
+		super.addPages();
+
+		_pageOne = new WizardDeploymentNewFileCreationPage(_selection);
+		addPage(_pageOne);
 	}
 
 }
