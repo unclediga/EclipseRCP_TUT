@@ -53,7 +53,6 @@ public class Activator extends AbstractUIPlugin {
 	}
 
     public static Image getImage(String imagePath) {
-    	//System.out.println("I want image "+imagePath);
         ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, imagePath);
         Image image = imageDescriptor.createImage();
 

@@ -16,8 +16,9 @@ import customnavigator.Activator;
  */
 public class CustomProjectSchemaTables implements ICustomProjectElement {
 
-	public static final String NAME = "Tables";
-	private ICustomProjectElement _parent;
+    public static final String NAME = "Tables"; //$NON-NLS-1$
+
+    private ICustomProjectElement _parent;
     private Image _image;
     private ICustomProjectElement[] _children;
 
@@ -31,7 +32,7 @@ public class CustomProjectSchemaTables implements ICustomProjectElement {
     @Override
     public Image getImage() {
         if (_image == null) {
-            _image = Activator.getImage("icons/project-schema-tables.png"); //$NON-NLS-1$
+            _image = Activator.getImage("icons/project-schema-tables.png");
         }
 
         return _image;

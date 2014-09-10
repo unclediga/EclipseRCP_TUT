@@ -27,7 +27,7 @@ public class CustomProjectSchema implements ICustomProjectElement {
 
     public Image getImage() {
         if (_image == null) {
-            _image = Activator.getImage("icons/project-schema.png"); //$NON-NLS-1$
+            _image = Activator.getImage("icons/project-schema.png");
         }
 
         return _image;

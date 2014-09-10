@@ -28,7 +28,7 @@ public class CustomProjectParent implements ICustomProjectElement {
 
     public Image getImage() {
         if (_image == null) {
-            _image = Activator.getImage("icons/project-folder.png"); //$NON-NLS-1$
+            _image = Activator.getImage("icons/project-folder.png");
         }
 
         return _image;

@@ -16,8 +16,7 @@ import customnavigator.Activator;
  */
 public class CustomProjectStoredProcedures implements ICustomProjectElement {
 
-    public static final String NAME = "Stored Procedures";
-	private ICustomProjectElement _parent;
+    private ICustomProjectElement _parent;
     private Image _image;
     private ICustomProjectElement[] _children;
 
@@ -28,7 +27,7 @@ public class CustomProjectStoredProcedures implements ICustomProjectElement {
     @Override
     public Image getImage() {
         if (_image == null) {
-            _image = Activator.getImage("icons/project-stored-procedures.png"); //$NON-NLS-1$
+            _image = Activator.getImage("icons/project-stored-procedures.png");
         }
 
         return _image;
@@ -36,7 +35,7 @@ public class CustomProjectStoredProcedures implements ICustomProjectElement {
 
     @Override
     public String getText() {
-        return NAME;
+        return "Stored Procedures";
     }
 
     @Override

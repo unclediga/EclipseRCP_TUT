@@ -16,8 +16,9 @@ import customnavigator.Activator;
  */
 public class CustomProjectSchemaFilters implements ICustomProjectElement {
 
-	public static final String NAME = "Filters";
-	private ICustomProjectElement _parent;
+    public static final String NAME = "Filters"; //$NON-NLS-1$
+
+    private ICustomProjectElement _parent;
     private Image _image;
     private ICustomProjectElement[] _children;
 
@@ -31,7 +32,7 @@ public class CustomProjectSchemaFilters implements ICustomProjectElement {
     @Override
     public Image getImage() {
         if (_image == null) {
-            _image = Activator.getImage("icons/project-schema-filters.png"); //$NON-NLS-1$
+            _image = Activator.getImage("icons/project-schema-filters.png");
         }
 
         return _image;
