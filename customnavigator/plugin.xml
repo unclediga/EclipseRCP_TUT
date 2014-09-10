@@ -5,7 +5,7 @@
          point="org.eclipse.ui.views">
       <view
             category="customnavigator.category"
-            class="customnavigator.navigator.CustomNavigator"
+            class="org.eclipse.ui.navigator.CommonNavigator"
             icon="icons/navigator.png"
             id="customnavigator.navigator"
             name="%view.name">
@@ -47,7 +47,7 @@
          <triggerPoints>
             <or>
                <instanceof
-                     value="customnavigator.navigator.CustomProjectWorkbenchRoot">
+                     value="org.eclipse.core.resources.IWorkspaceRoot">
                </instanceof>
             </or>
          </triggerPoints>

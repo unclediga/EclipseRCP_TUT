@@ -88,6 +88,9 @@ What did we do this time around?
 
 -------------------------------------
 Writing an Eclipse Plug-in (Part 11): Common Navigator: Displaying Custom Resources or Refresh Or Die or The Magic of navigatorContent
-
+- Как сделать так, чтобы viewer отражал все изменения, происходящие в Workspace. 
+- Изменили Custom Navigator. Вернулись на стандартный класс _org.eclipse.ui.navigator.CommonNavigator_.
+- Переделали ContentProvider
+  
 
 
