@@ -108,9 +108,13 @@ What did we do this time around?
 
 --------------------------------------
 **Writing an Eclipse Plug-in (Part 15): Custom Project: Customizing the Perspective Menus (Main menu)**
-Как добавить New Wizard в группы меню "New.." через org.eclipse.ui.perspectiveExtensions.
+- Как добавить New Wizard в группы меню "New.." через org.eclipse.ui.perspectiveExtensions.
 
 --------------------------------------
 **Writing an Eclipse Plug-in (Part 16): Custom Project: Customizing the Perspective Menus (Toolbar)**
-Добавим три кнопки на главный тулбар декларативно с помощью точки _org.eclipse.ui.menus_ и _Platform Command Framework_.
+- Добавим три кнопки на главный тулбар декларативно с помощью точки _org.eclipse.ui.menus_ и _Platform Command Framework_.
+
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 17): Custom Project: Customizing the Perspective Menus Using Customize Perspective**
+- How-To по функциональности менюшки "Window - Customize Perspective..."
 
