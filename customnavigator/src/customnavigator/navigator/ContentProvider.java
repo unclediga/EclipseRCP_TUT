@@ -5,7 +5,9 @@
 package customnavigator.navigator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResourceChangeEvent;
@@ -14,6 +16,8 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 
 import customplugin.natures.ProjectNature;
@@ -23,8 +27,9 @@ import customplugin.natures.ProjectNature;
  */
 public class ContentProvider implements ITreeContentProvider, IResourceChangeListener {
 
-    private static final Object[]   NO_CHILDREN = {};
-    Viewer _viewer;
+    private static final Object[] NO_CHILDREN = {};
+    private Map<String, Object> _wrapperCache = new HashMap<String, Object>();
+    private Viewer _viewer;
 
     public ContentProvider() {
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
@@ -58,7 +63,7 @@ public class ContentProvider implements ITreeContentProvider, IResourceChangeLis
      */
     @Override
     public Object getParent(Object element) {
-        System.out.println("ContentProvider.getParent: " + element.getClass().getName()); //$NON-NLS-1$
+        System.out.println("ContentProvider.getParent: " + (element == null ? "null" : element.getClass().getName())); //$NON-NLS-1$
         Object parent = null;
             
         if (IProject.class.isInstance(element)) {
@@ -126,11 +131,14 @@ public class ContentProvider implements ITreeContentProvider, IResourceChangeLis
         _viewer = viewer;
     }
 
-    private int _count = 1;
     @Override
     public void resourceChanged(IResourceChangeEvent event) {
-        System.out.println("ContentProvider.resourceChanged: Hey! Something happened " + _count++ + " times: " + event); //$NON-NLS-1$ //$NON-NLS-2$
-        _viewer.refresh();
+        System.out.println("ContentProvider.resourceChanged: Hey! Something happened: " + event); //$NON-NLS-1$
+        TreeViewer viewer = (TreeViewer) _viewer;
+        TreePath[] treePaths = viewer.getExpandedTreePaths();
+        viewer.refresh();
+        viewer.setExpandedTreePaths(treePaths); 
+        System.out.println("ContentProvider.resourceChanged: completed refresh() and setExpandedXXX()"); //$NON-NLS-1$
     }
 
     private Object createCustomProjectParent(IProject parentElement) {
@@ -152,7 +160,12 @@ public class ContentProvider implements ITreeContentProvider, IResourceChangeLis
         
         List<Object> list = new ArrayList<Object>();
         for (int i = 0; i < projects.length; i++) {
-            Object customProjectParent = createCustomProjectParent(projects[i]);
+            Object customProjectParent = _wrapperCache.get(projects[i].getName()); 
+            if (customProjectParent == null) {
+                customProjectParent = createCustomProjectParent(projects[i]);
+                _wrapperCache.put(projects[i].getName(), customProjectParent);
+            }
+
             if (customProjectParent != null) {
                 list.add(customProjectParent);
             } // else ignore the project
