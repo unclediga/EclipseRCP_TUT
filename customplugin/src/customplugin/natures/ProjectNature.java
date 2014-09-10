@@ -8,12 +8,14 @@ public class ProjectNature implements IProjectNature {
 
     public static final String NATURE_ID = "customplugin.projectNature"; //$NON-NLS-1$
 
+    @SuppressWarnings("unused")
     @Override
     public void configure() throws CoreException {
         // TODO Auto-generated method stub
 
     }
 
+    @SuppressWarnings("unused")
     @Override
     public void deconfigure() throws CoreException {
         // TODO Auto-generated method stub

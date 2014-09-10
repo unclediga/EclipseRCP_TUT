@@ -6,67 +6,22 @@
 package customnavigator.navigator;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.swt.graphics.Image;
-
-import customnavigator.Activator;
 
 
 /**
  * @author carlos
  *
  */
-public class CustomProjectSchema implements ICustomProjectElement {
+public class CustomProjectSchema extends CustomProjectElement {
 
-    private ICustomProjectElement _parent;
-    private ICustomProjectElement[] _children;
-    private Image _image;
+    public static final String NAME = "Schema"; //$NON-NLS-1$
 
     public CustomProjectSchema(ICustomProjectElement parent) {
-        _parent = parent;
-    }
-
-    public Image getImage() {
-        if (_image == null) {
-            _image = Activator.getImage("icons/project-schema.png");
-        }
-
-        return _image;
-    }
-
-    public String getText() {
-        return "Schema";
+        super(parent, NAME, Messages.CustomProjectSchema_Project_Schema);
     }
 
     @Override
-    public IProject getProject() {
-        return _parent.getProject();
-    }
-    
-    @Override
-    public Object getParent() {
-        return _parent;
-    }
-
-    public ICustomProjectElement[] getChildren() {
-        if (_children == null) {
-            _children = initializeChildren(getProject());
-        }
-        // else the children are just fine
-        
-        return _children;
-    }
-
-    @Override
-    public boolean hasChildren() {
-        if (_children == null) {
-            _children = initializeChildren(getProject());
-        }
-        // else we have already initialized them
-    
-        return _children.length > 0;
-    }
-
-    private ICustomProjectElement[] initializeChildren(IProject iProject) {
+    protected ICustomProjectElement[] initializeChildren(IProject iProject) {
         ICustomProjectElement[] children = new ICustomProjectElement [] {
                 new CustomProjectSchemaTables(this),
                 new CustomProjectSchemaViews(this),

@@ -5,65 +5,28 @@
 package customnavigator.navigator;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.swt.graphics.Image;
 
-import customnavigator.Activator;
 
 /**
  * @author carlos
  */
-public class CustomProjectParent implements ICustomProjectElement {
+public class CustomProjectParent extends CustomProjectElement {
 
-    IProject                _project;
-    Image                   _image;
-    ICustomProjectElement[] _children;
+    private IProject _project;
 
     public CustomProjectParent(IProject iProject) {
+        super(null, iProject.getName(), Messages.CustomProjectParent_Project_Folder);
+        
         _project = iProject;
-    }
-
-    public String getText() {
-        return _project.getName();
-    }
-
-    public Image getImage() {
-        if (_image == null) {
-            _image = Activator.getImage("icons/project-folder.png");
-        }
-
-        return _image;
     }
 
     @Override
     public IProject getProject() {
         return _project;
     }
-    
-    @Override
-    public Object getParent() {
-        return null;
-    }
 
     @Override
-    public ICustomProjectElement[] getChildren() {
-        if (_children == null) {
-            _children = initializeChildren(_project);
-        }
-        // else we have already initialized them
-    
-        return _children;
-    }
-
-    @Override
-    public boolean hasChildren() {
-        if (_children == null) {
-            _children = initializeChildren(_project);
-        }
-        // else we have already initialized them
-        return _children.length > 0;
-    }
-
-    private ICustomProjectElement[] initializeChildren(IProject project) {
+    protected ICustomProjectElement[] initializeChildren(IProject project) {
         ICustomProjectElement[] children = {
                 new CustomProjectSchema(this),
                 new CustomProjectStoredProcedures(this)

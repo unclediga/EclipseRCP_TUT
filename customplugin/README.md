@@ -96,3 +96,13 @@ What did we do this time around?
 **Writing an Eclipse Plug-in (Part 12): Common Navigator: Keeping the Tree Open When a New Resource is Added**
 - При создании нового проекта, у него должно быть показаны открытыми всё ветви подпроектов.
 
+
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 13): Common Navigator: Adding Tests**
+
+Добавили тесты. Пропускаю пока.
+
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 14): Common Navigator: Refactoring the Children**
+- выделил общий CustomProjectElement
+

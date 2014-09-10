@@ -55,6 +55,7 @@ public class CustomProjectNewWizard extends Wizard implements INewWizard, IExecu
 
     }
 
+    @SuppressWarnings("unused")
     @Override
     public void setInitializationData(IConfigurationElement config, String propertyName, Object data) throws CoreException {
         _configurationElement = config;

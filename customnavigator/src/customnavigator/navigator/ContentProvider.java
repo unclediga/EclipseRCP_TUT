@@ -61,9 +61,10 @@ public class ContentProvider implements ITreeContentProvider, IResourceChangeLis
      * @see
      * org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
      */
+    @SuppressWarnings("null")
     @Override
     public Object getParent(Object element) {
-        System.out.println("ContentProvider.getParent: " + (element == null ? "null" : element.getClass().getName())); //$NON-NLS-1$
+        System.out.println("ContentProvider.getParent: " + (element == null ? "null" : element.getClass().getName())); //$NON-NLS-1$ //$NON-NLS-2$
         Object parent = null;
             
         if (IProject.class.isInstance(element)) {
