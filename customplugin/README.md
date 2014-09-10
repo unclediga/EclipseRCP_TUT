@@ -106,3 +106,6 @@ What did we do this time around?
 **Writing an Eclipse Plug-in (Part 14): Common Navigator: Refactoring the Children**
 - выделил общий CustomProjectElement
 
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 15): Custom Project: Customizing the Perspective Menus (Main menu)**
+Как добавить New Wizard в группы меню "New.." через org.eclipse.ui.perspectiveExtensions.

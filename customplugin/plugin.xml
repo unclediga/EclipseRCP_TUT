@@ -52,6 +52,15 @@
                relationship="left"
                relative="org.eclipse.ui.editorss">
          </view>
+         <newWizardShortcut
+               id="customplugin.wizard.new.custom">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="customplugin.wizard.file.schema">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="customplugin.wizard.file.deployment">
+         </newWizardShortcut>
       </perspectiveExtension>
    </extension>
    <extension
