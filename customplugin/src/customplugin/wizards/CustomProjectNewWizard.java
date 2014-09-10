@@ -16,12 +16,13 @@ import customplugin.projects.CustomProjectSupport;
 
 public class CustomProjectNewWizard extends Wizard implements INewWizard, IExecutableExtension {
 
+    private static final String WIZARD_NAME = "New Custom Plug-in Project"; //$NON-NLS-1$
     private static final String PAGE_NAME = "Custom Plug-in Project Wizard"; //$NON-NLS-1$
     private WizardNewProjectCreationPage _pageOne;
     private IConfigurationElement _configurationElement;
 
     public CustomProjectNewWizard() {
-        // TODO Auto-generated constructor stub
+        setWindowTitle(WIZARD_NAME);
     }
 
     @Override

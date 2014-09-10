@@ -15,6 +15,22 @@
             id="customplugin.wizard.new.custom"
             name="%wizard.name">
       </wizard>
+      <wizard
+            category="customplugin.category.wizards"
+            class="customplugin.wizards.CustomProjectNewSchemaFile"
+            descriptionImage="icons/schema-file_32x32.png"
+            icon="icons/schema-file_16x16.png"
+            id="customplugin.wizard.file.schema"
+            name="%wizard.name.schema">
+      </wizard>
+      <wizard
+            category="customplugin.category.wizards"
+            class="customplugin.wizards.CustomProjectNewDeploymentFile"
+            descriptionImage="icons/deployment-file_32x32.png"
+            icon="icons/deployment-file_16x16.png"
+            id="customplugin.wizard.file.deployment"
+            name="%wizard.name.deployment">
+      </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
@@ -62,7 +78,7 @@
             base-type="org.eclipse.core.runtime.xml"
             file-extensions="xml"
             id="customplugin.contenttype.schema"
-            name="%content-type.name"
+            name="%content-type.name.schema"
             priority="normal">
          <describer
                class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
@@ -76,7 +92,7 @@
             base-type="org.eclipse.core.runtime.xml"
             file-extensions="xml"
             id="customplugin.contenttype.deployment"
-            name="%content-type.name.0"
+            name="%content-type.name.deployment"
             priority="normal">
          <describer
                class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
@@ -86,25 +102,6 @@
             </parameter>
          </describer>
       </content-type>
-   </extension>
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="customplugin.category.wizards"
-            class="customplugin.wizards.CustomProjectNewSchemaFile"
-            descriptionImage="icons/schema-file_32x32.png"
-            icon="icons/schema-file_16x16.png"
-            id="customplugin.wizard.file.schema"
-            name="%wizard.name.schema">
-      </wizard>
-      <wizard
-            category="customplugin.category.wizards"
-            class="customplugin.wizards.CustomProjectNewDeploymentFile"
-            descriptionImage="icons/deployment-file_32x32.png"
-            icon="icons/deployment-file_16x16.png"
-            id="customplugin.wizard.file.deployment"
-            name="%wizard.name.deployment">
-      </wizard>
    </extension>
 
 </plugin>

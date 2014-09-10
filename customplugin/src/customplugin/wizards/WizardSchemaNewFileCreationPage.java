@@ -19,28 +19,27 @@ import customplugin.Activator;
  */
 public class WizardSchemaNewFileCreationPage extends WizardNewFileCreationPage {
 
-	private static final String PAGE_NAME = "Custom Plug-in Schema File Wizard"; //$NON-NLS-1$
+    private static final String PAGE_NAME = "Custom Plug-in Schema File Wizard"; //$NON-NLS-1$
 
-	public WizardSchemaNewFileCreationPage(IStructuredSelection selection) {
+    public WizardSchemaNewFileCreationPage(IStructuredSelection selection) {
+        super(PAGE_NAME, selection);
+        
+        setTitle(NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_File_Wizard);
+        setDescription(NewWizardMessages.WizardSchemaNewFileCreationPage_Create_a_Schema_File);
+        setFileExtension(NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_File_Extension);
+    }
 
-		super(PAGE_NAME, selection);
-
-		setTitle(NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_File_Wizard);
-		setDescription(NewWizardMessages.WizardSchemaNewFileCreationPage_Create_a_Schema_File);
-		setFileExtension(NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_File_Extension); 
-	}
-
-	@Override
-	protected InputStream getInitialContents() {
-		
-		String templateFilePath = NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_Template_Location;
+    @Override
+    protected InputStream getInitialContents() {
+        String templateFilePath = NewWizardMessages.WizardSchemaNewFileCreationPage_Schema_Template_Location;
         InputStream inputStream = null;
-		try {
-			inputStream = Activator.getDefault().getBundle().getEntry(templateFilePath).openStream();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            inputStream = Activator.getDefault().getBundle().getEntry(templateFilePath).openStream();
+        } catch (IOException e) {
+            // send back null
+        }
 
-		return inputStream;
-	}
+        return inputStream;
+    }
+
 }

@@ -81,7 +81,13 @@ What did we do this time around?
 - Ну ещё вынесли оставшиеся строковые константы с помощью Визирда в отдельный properties-файл.
 
 
+-------------------------------------
+**Writing an Eclipse Plug-in (Part 10): Custom Project: Creating a Custom File Type**
+- Определили Визарды по созданию новых xml-файликов.
+- рефакторили - создали суперкласс CustomProjectNewFile.java 
 
+-------------------------------------
+Writing an Eclipse Plug-in (Part 11): Common Navigator: Displaying Custom Resources or Refresh Or Die or The Magic of navigatorContent
 
 
 
