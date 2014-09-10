@@ -52,15 +52,6 @@
                relationship="left"
                relative="org.eclipse.ui.editorss">
          </view>
-         <newWizardShortcut
-               id="customplugin.wizard.new.custom">
-         </newWizardShortcut>
-         <newWizardShortcut
-               id="customplugin.wizard.file.schema">
-         </newWizardShortcut>
-         <newWizardShortcut
-               id="customplugin.wizard.file.deployment">
-         </newWizardShortcut>
       </perspectiveExtension>
    </extension>
    <extension
@@ -111,6 +102,90 @@
             </parameter>
          </describer>
       </content-type>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="customplugin.perspective">
+         <newWizardShortcut
+               id="customplugin.wizard.new.custom">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="customplugin.wizard.file.schema">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="customplugin.wizard.file.deployment">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="customplugin.toolbar">
+            <command
+                  commandId="org.eclipse.ui.newWizard"
+                  icon="icons/project-folder.png"
+                  label="%customproject.label"
+                  style="push"
+                  tooltip="%customproject.tooltip">
+               <parameter
+                     name="newWizardId"
+                     value="customplugin.wizard.new.custom">
+               </parameter>
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="customplugin.perspective">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.newWizard"
+                  icon="icons/schema-file_16x16.png"
+                  label="%schema.label"
+                  style="push"
+                  tooltip="%schema.tooltip">
+               <parameter
+                     name="newWizardId"
+                     value="customplugin.wizard.file.schema">
+               </parameter>
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="customplugin.perspective">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.ui.newWizard"
+                  icon="icons/deployment-file_16x16.png"
+                  label="%deployment.label"
+                  style="push"
+                  tooltip="%deployment.tooltip">
+               <parameter
+                     name="newWizardId"
+                     value="customplugin.wizard.file.deployment">
+               </parameter>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeWorkbenchWindow.activePerspective">
+                  <equals
+                        value="customplugin.perspective">
+                  </equals>
+               </with>
+            </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
    </extension>
 
 </plugin>
