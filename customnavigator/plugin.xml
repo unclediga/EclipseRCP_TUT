@@ -3,39 +3,53 @@
 <plugin>
    <extension
          point="org.eclipse.ui.views">
+      <category
+            id="customnavigator.category"
+            name="%category.name">
+      </category>
       <view
+            allowMultiple="false"
             category="customnavigator.category"
             class="org.eclipse.ui.navigator.CommonNavigator"
             icon="icons/navigator.png"
             id="customnavigator.navigator"
             name="%view.name">
       </view>
-      <category
-            id="customnavigator.category"
-            name="%category.name">
-      </category>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.viewer">
-      <viewerActionBinding
+      <viewer
             viewerId="customnavigator.navigator">
-         <includes>
-            <actionExtension
-                  pattern="org.eclipse.ui.navigator.resources.*">
-            </actionExtension>
-         </includes>
-      </viewerActionBinding>
+         <popupMenu
+               id="customnavigator.navigator#PopupMenu">
+            <insertionPoint
+                  name="group.new">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.build"
+                  separator="true">
+            </insertionPoint>
+         </popupMenu>
+      </viewer>
       <viewerContentBinding
             viewerId="customnavigator.navigator">
          <includes>
-            <contentExtension
-                  pattern="org.eclipse.ui.navigator.resources.filters.workingSet">
-            </contentExtension>
             <contentExtension
                   pattern="customnavigator.navigatorContent">
             </contentExtension>
          </includes>
       </viewerContentBinding>
+      <viewerActionBinding
+            viewerId="customnavigator.navigator">
+         <includes>
+            <actionExtension
+                  pattern="customnavigator.popup.actionprovider.CustomNewAction">
+            </actionExtension>
+            <actionExtension
+                  pattern="customnavigator.popup.actionprovider.CustomRefreshAction">
+            </actionExtension>
+         </includes>
+      </viewerActionBinding>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
@@ -64,50 +78,45 @@
             </parentExpression>
          </commonSorter>
       </navigatorContent>
-     <commonWizard
-           type="new"
-           wizardId="customplugin.wizard.new.custom">
-        <enablement></enablement>
-     </commonWizard>
-     <commonWizard
-           type="new"
-           wizardId="customplugin.wizard.file.schema">
-        <enablement></enablement>
-     </commonWizard>
-     <commonWizard
-           type="new"
-           wizardId="customplugin.wizard.file.deployment">
-        <enablement></enablement>
-     </commonWizard>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:customnavigator.navigator?before=import">
-         <command
-               commandId="org.eclipse.ui.edit.copy"
-               label="%copy.command.label"
-               icon="icons/copy_16x16.png"
-               style="push">
-         </command>
-         <command
-               commandId="org.eclipse.ui.edit.paste"
-               label="%paste.command.label"
-               icon="icons/paste_16x16.png"
-               style="push">
-         </command>
-         <command
-               commandId="org.eclipse.ui.edit.delete"
-               label="%delete.command.label"
-               icon="icons/delete_16x16.png"
-               style="push">
-         </command>
-         <separator
-               name="customnavigator.separator"
-               visible="true">
-         </separator>
-      </menuContribution>
+      <actionProvider
+            class="customnavigator.popup.actionprovider.CustomNewActionProvider"
+            id="customnavigator.popup.actionprovider.CustomNewAction">
+         <enablement>
+            <or>
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+               </adapt>
+               <adapt
+                     type="java.util.Collection">
+                  <count
+                        value="0">
+                  </count>
+               </adapt>
+            </or>
+         </enablement>
+      </actionProvider>
+      <actionProvider
+            class="customnavigator.popup.actionprovider.CustomRefreshActionProvider"
+            id="customnavigator.popup.actionprovider.CustomRefreshAction">
+         <enablement>
+            <or>
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+               </adapt>
+               <adapt
+                     type="java.util.Collection">
+                  <count
+                        value="0">
+                  </count>
+               </adapt>
+            </or>
+         </enablement>
+      </actionProvider>
+      <commonWizard
+            type="new"
+            wizardId="customplugin.wizard.new.custom">
+         <enablement></enablement>
+      </commonWizard>
    </extension>
 
 </plugin>
