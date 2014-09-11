@@ -64,5 +64,56 @@
          </commonSorter>
       </navigatorContent>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:common.new.menu?after=additions">
+         <command
+               commandId="org.eclipse.ui.newWizard"
+               icon="icons/project-folder.png"
+               label="%customProject.command.label"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.newWizard"
+               icon="icons/schema-file_16x16.png"
+               label="%schemaFile.command.label"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.newWizard"
+               icon="icons/deployment-file_16x16.png"
+               label="%deployment.command.label"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:customnavigator.navigator?before=import">
+         <command
+               commandId="org.eclipse.ui.edit.copy"
+               label="%copy.command.label"
+               icon="icons/copy_16x16.png"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.paste"
+               label="%paste.command.label"
+               icon="icons/paste_16x16.png"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.delete"
+               label="%delete.command.label"
+               icon="icons/delete_16x16.png"
+               style="push">
+         </command>
+         <separator
+               name="customnavigator.separator"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
 
 </plugin>

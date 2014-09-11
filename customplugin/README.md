@@ -118,3 +118,6 @@ What did we do this time around?
 **Writing an Eclipse Plug-in (Part 17): Custom Project: Customizing the Perspective Menus Using Customize Perspective**
 - How-To по функциональности менюшки "Window - Customize Perspective..."
 
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 18): Common Navigator: Adding Submenus (Presentation)**
+- Добавляем popup-menu для навигатора. Настройка визуальной части.
