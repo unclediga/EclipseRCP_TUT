@@ -5,6 +5,7 @@
  */
 package customnavigator.navigator;
 
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
@@ -34,15 +35,17 @@ public class LabelProvider implements ILabelProvider {
      * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
      */
     @Override
-    public String getText(Object element) {
-        String text = ""; //$NON-NLS-1$
-        if (ICustomProjectElement.class.isInstance(element)) {
-            text = ((ICustomProjectElement)element).getText();
-        }
-        // else ignore the element
-        
-        return text;
-    }
+	public String getText(Object element) {
+		String text = ""; //$NON-NLS-1$
+		if (ICustomProjectElement.class.isInstance(element)) {
+			text = ((ICustomProjectElement) element).getText();
+		} else if (IWorkspaceRoot.class.isInstance(element)) {
+			text = Messages.LabelProvider_Custom_Plugin_Navigator;
+		} 
+		// else ignore the element
+
+		return text;
+	}
 
     /* (non-Javadoc)
      * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)

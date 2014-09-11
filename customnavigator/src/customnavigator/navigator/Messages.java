@@ -10,6 +10,7 @@ public class Messages extends NLS {
     public static String CustomProjectSchemaTables_Project_Schema_Tables;
     public static String CustomProjectSchemaViews_Project_Schema_Views;
     public static String CustomProjectStoredProcedures_Project_Stored_Procedures;
+	public static String LabelProvider_Custom_Plugin_Navigator;
     static {
         // initialize resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);

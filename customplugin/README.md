@@ -127,6 +127,10 @@ What did we do this time around?
 - менюшки Wizard-во привязываем не через locationURI="popup:common.new.menu?after=additions", а
 через расширение контента навигатора:  
 point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonWizard
+
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 19): A Quick Display Fix**
+- при наведении мышки на custom navigator title bar, не всплывает tooltip с доп.инфо, как у других вьюшек.
    
 
 
