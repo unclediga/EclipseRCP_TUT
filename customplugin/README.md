@@ -121,3 +121,13 @@ What did we do this time around?
 --------------------------------------
 **Writing an Eclipse Plug-in (Part 18): Common Navigator: Adding Submenus (Presentation)**
 - Добавляем popup-menu для навигатора. Настройка визуальной части.
+
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 18 – Take 2): Common Navigator: Adding submenus (Presentation/Behavior)**
+- менюшки Wizard-во привязываем не через locationURI="popup:common.new.menu?after=additions", а
+через расширение контента навигатора:  
+point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonWizard
+   
+
+
+

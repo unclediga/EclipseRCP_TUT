@@ -40,6 +40,7 @@
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
+            activeByDefault="true"
             contentProvider="customnavigator.navigator.ContentProvider"
             id="customnavigator.navigatorContent"
             labelProvider="customnavigator.navigator.LabelProvider"
@@ -63,31 +64,24 @@
             </parentExpression>
          </commonSorter>
       </navigatorContent>
+     <commonWizard
+           type="new"
+           wizardId="customplugin.wizard.new.custom">
+        <enablement></enablement>
+     </commonWizard>
+     <commonWizard
+           type="new"
+           wizardId="customplugin.wizard.file.schema">
+        <enablement></enablement>
+     </commonWizard>
+     <commonWizard
+           type="new"
+           wizardId="customplugin.wizard.file.deployment">
+        <enablement></enablement>
+     </commonWizard>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:common.new.menu?after=additions">
-         <command
-               commandId="org.eclipse.ui.newWizard"
-               icon="icons/project-folder.png"
-               label="%customProject.command.label"
-               style="push">
-         </command>
-         <command
-               commandId="org.eclipse.ui.newWizard"
-               icon="icons/schema-file_16x16.png"
-               label="%schemaFile.command.label"
-               style="push">
-         </command>
-         <command
-               commandId="org.eclipse.ui.newWizard"
-               icon="icons/deployment-file_16x16.png"
-               label="%deployment.command.label"
-               style="push">
-         </command>
-      </menuContribution>
       <menuContribution
             allPopups="false"
             locationURI="popup:customnavigator.navigator?before=import">
