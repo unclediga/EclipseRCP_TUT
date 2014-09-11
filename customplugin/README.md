@@ -132,6 +132,10 @@ point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonW
 **Writing an Eclipse Plug-in (Part 19): A Quick Display Fix**
 - при наведении мышки на custom navigator title bar, не всплывает tooltip с доп.инфо, как у других вьюшек.
    
+--------------------------------------
+Writing an Eclipse Plug-in (Part 20): Return of the Popup Menu (For an Empty Navigator)
+- решение проблемы, когда popup появляется при пустом навигаторе либо когда ни один проект не выделен.
+И popup не вызывается, когда хотя бы один проект выбран.
 
 
 
