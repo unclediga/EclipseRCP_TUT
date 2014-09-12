@@ -133,10 +133,12 @@ point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonW
 - при наведении мышки на custom navigator title bar, не всплывает tooltip с доп.инфо, как у других вьюшек.
    
 --------------------------------------
-Writing an Eclipse Plug-in (Part 20): Return of the Popup Menu (For an Empty Navigator)
+**Writing an Eclipse Plug-in (Part 20): Return of the Popup Menu (For an Empty Navigator)**
 Всё получилось. 
 - Выбираешь проект – наикакого popup-меню нет.
 - Снимашь выделение и кликаешь в пустом месте "Custom Navigator" – появляется два пункта: "Refresh" и "New…". Последний открывается ещё в два пункта: "Custom Project" – это Wizard, который добавили ради эксперимента, и стандартный "Others…".
 
-
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 21): Return of the Popup Menu (Displaying Resources)**
+- Заменили условия доступности для провайдеров. И теперь всё везде видно. И на проекте, и в пустом поле popup-менюшка появляется.
 
