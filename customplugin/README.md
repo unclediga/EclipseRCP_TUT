@@ -142,3 +142,7 @@ point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonW
 **Writing an Eclipse Plug-in (Part 21): Return of the Popup Menu (Displaying Resources)**
 - Заменили условия доступности для провайдеров. И теперь всё везде видно. И на проекте, и в пустом поле popup-менюшка появляется.
 
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 22): Common Navigator: Adding submenus (Presentation)**
+
+- PART 1 Добавил один пункт меню "Schema Table" в popup-меню для навигатора.

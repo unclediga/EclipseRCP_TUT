@@ -118,5 +118,52 @@
          <enablement></enablement>
       </commonWizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="Open the New Custom Schema Table Wizard"
+            id="customnavigator.newSchemaTable"
+            name="SchemaTable">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="customnavigator.handler.BogusHandler"
+            commandId="customnavigator.newSchemaTable">
+         <enabledWhen>
+            <with
+                  variable="selection">
+               <iterate
+                     ifEmpty="false">
+                  <instanceof
+                        value="customnavigator.navigator.ICustomProjectElement">
+                  </instanceof>
+               </iterate>
+            </with>
+         </enabledWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:common.new.menu?after=additions">
+         <command
+               commandId="customnavigator.newSchemaTable"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="customnavigator.newSchemaTable"
+            icon="icons/project-schema-tables.png">
+      </image>
+   </extension>
 
 </plugin>
