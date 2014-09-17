@@ -118,12 +118,27 @@
          <enablement></enablement>
       </commonWizard>
    </extension>
-   <extension
+<extension
          point="org.eclipse.ui.commands">
       <command
-            description="Open the New Custom Schema Table Wizard"
+            description="%command.schemaTable.description"
             id="customnavigator.newSchemaTable"
-            name="SchemaTable">
+            name="%command.schemaTable.name">
+      </command>
+      <command
+            description="%command.schemaView.description"
+            id="customnavigator.newSchemaView"
+            name="%command.schemaView.name">
+      </command>
+      <command
+            description="%command.schemaFilter.description"
+            id="customnavigator.newSchemaFilter"
+            name="%command.schemaFilter.name">
+      </command>
+      <command
+            description="%command.storedProcedure.description"
+            id="customnavigator.newStoredProcedure"
+            name="%command.storedProcedure.name">
       </command>
    </extension>
    <extension
@@ -131,6 +146,51 @@
       <handler
             class="customnavigator.handler.BogusHandler"
             commandId="customnavigator.newSchemaTable">
+         <enabledWhen>
+            <with
+                  variable="selection">
+               <iterate
+                     ifEmpty="false">
+                  <instanceof
+                        value="customnavigator.navigator.ICustomProjectElement">
+                  </instanceof>
+               </iterate>
+            </with>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="customnavigator.handler.BogusHandler"
+            commandId="customnavigator.newSchemaView">
+         <enabledWhen>
+            <with
+                  variable="selection">
+               <iterate
+                     ifEmpty="false">
+                  <instanceof
+                        value="customnavigator.navigator.ICustomProjectElement">
+                  </instanceof>
+               </iterate>
+            </with>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="customnavigator.handler.BogusHandler"
+            commandId="customnavigator.newSchemaFilter">
+         <enabledWhen>
+            <with
+                  variable="selection">
+               <iterate
+                     ifEmpty="false">
+                  <instanceof
+                        value="customnavigator.navigator.ICustomProjectElement">
+                  </instanceof>
+               </iterate>
+            </with>
+         </enabledWhen>
+      </handler>
+      <handler
+            class="customnavigator.handler.BogusHandler"
+            commandId="customnavigator.newStoredProcedure">
          <enabledWhen>
             <with
                   variable="selection">
@@ -156,6 +216,27 @@
                   checkEnabled="true">
             </visibleWhen>
          </command>
+         <command
+               commandId="customnavigator.newSchemaView"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="customnavigator.newSchemaFilter"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="customnavigator.newStoredProcedure"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -164,6 +245,17 @@
             commandId="customnavigator.newSchemaTable"
             icon="icons/project-schema-tables.png">
       </image>
+      <image
+            commandId="customnavigator.newSchemaView"
+            icon="icons/project-schema-views.png">
+      </image>
+      <image
+            commandId="customnavigator.newSchemaFilter"
+            icon="icons/project-schema-filters.png">
+      </image>
+      <image
+            commandId="customnavigator.newStoredProcedure"
+            icon="icons/project-stored-procedures.png">
+      </image>
    </extension>
-
 </plugin>

@@ -146,3 +146,6 @@ point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonW
 **Writing an Eclipse Plug-in (Part 22): Common Navigator: Adding submenus (Presentation)**
 
 - PART 1 Добавил один пункт меню "Schema Table" в popup-меню для навигатора.
+- PART 2 Добавил оставшиеся пункты для навигатора.
+- Externalize strings
+
