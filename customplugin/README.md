@@ -156,4 +156,17 @@ point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonW
 - Изменили Unit-test проект для проверки новой структуры;
 - Вместо "Deploy" везде пишем "Stored Procedure".
 
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 24): Common Navigator: Configuring the submenus (Presentation…again)**
+
+Опять небольшие изменения для popup-менюшки:
+
+Display the proper menu item based on the node/project selected
+- If right clicking on Schema then display Table, View and Filter,
+-- If right clicking on Tables then display Schema Table,
+-- If right clicking on Views then display Schema View,
+-- If right clicking on Filters then display Schema Filter,
+- If right clicking on Stored Procedures then display Stored Procedure.
+
+
  

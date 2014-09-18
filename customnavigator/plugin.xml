@@ -149,11 +149,17 @@
          <enabledWhen>
             <with
                   variable="selection">
-               <iterate
-                     ifEmpty="false">
-                  <instanceof
-                        value="customnavigator.navigator.ICustomProjectElement">
-                  </instanceof>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectParent">
+                     </instanceof>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectSchema">
+                     </instanceof>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectSchemaTables">
+                     </instanceof></or>
                </iterate>
             </with>
          </enabledWhen>
@@ -164,11 +170,17 @@
          <enabledWhen>
             <with
                   variable="selection">
-               <iterate
-                     ifEmpty="false">
-                  <instanceof
-                        value="customnavigator.navigator.ICustomProjectElement">
-                  </instanceof>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectParent">
+                     </instanceof>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectSchema">
+                     </instanceof>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectSchemaViews">
+                     </instanceof></or>
                </iterate>
             </with>
          </enabledWhen>
@@ -179,11 +191,17 @@
          <enabledWhen>
             <with
                   variable="selection">
-               <iterate
-                     ifEmpty="false">
-                  <instanceof
-                        value="customnavigator.navigator.ICustomProjectElement">
-                  </instanceof>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectParent">
+                     </instanceof>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectSchema">
+                     </instanceof>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectSchemaFilters">
+                     </instanceof></or>
                </iterate>
             </with>
          </enabledWhen>
@@ -194,11 +212,14 @@
          <enabledWhen>
             <with
                   variable="selection">
-               <iterate
-                     ifEmpty="false">
-                  <instanceof
-                        value="customnavigator.navigator.ICustomProjectElement">
-                  </instanceof>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectParent">
+                     </instanceof>
+                     <instanceof
+                           value="customnavigator.navigator.CustomProjectStoredProcedures">
+                     </instanceof></or>
                </iterate>
             </with>
          </enabledWhen>
