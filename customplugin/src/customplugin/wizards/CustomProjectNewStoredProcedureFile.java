@@ -8,10 +8,10 @@ package customplugin.wizards;
 /**
  * @author carlos
  */
-public class CustomProjectNewDeploymentFile extends CustomProjectNewFile {
-    private static final String WIZARD_NAME = "New Deployment File"; //$NON-NLS-1$
+public class CustomProjectNewStoredProcedureFile extends CustomProjectNewFile {
+    private static final String WIZARD_NAME = "New Stored Procedure File"; //$NON-NLS-1$
 
-    public CustomProjectNewDeploymentFile() {
+    public CustomProjectNewStoredProcedureFile() {
         super(WIZARD_NAME);
     }
 
@@ -19,7 +19,7 @@ public class CustomProjectNewDeploymentFile extends CustomProjectNewFile {
     public void addPages() {
         super.addPages();
 
-        _pageOne = new WizardDeploymentNewFileCreationPage(_selection);
+        _pageOne = new WizardStoredProcedureNewFileCreationPage(_selection);
 
         addPage(_pageOne);
     }

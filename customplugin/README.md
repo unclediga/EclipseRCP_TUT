@@ -149,3 +149,11 @@ point="org.eclipse.ui.navigator.navigatorContent" -> navigatorContent -> commonW
 - PART 2 Добавил оставшиеся пункты для навигатора.
 - Externalize strings
 
+--------------------------------------
+**Writing an Eclipse Plug-in (Part 23): Common Navigator: Rewriting History**
+
+Теперь будет новая структура проекта.
+- Изменили Unit-test проект для проверки новой структуры;
+- Вместо "Deploy" везде пишем "Stored Procedure".
+
+ 

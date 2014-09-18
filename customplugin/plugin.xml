@@ -25,11 +25,11 @@
       </wizard>
       <wizard
             category="customplugin.category.wizards"
-            class="customplugin.wizards.CustomProjectNewDeploymentFile"
+            class="customplugin.wizards.CustomProjectNewStoredProcedureFile"
             descriptionImage="icons/deployment-file_32x32.png"
             icon="icons/deployment-file_16x16.png"
-            id="customplugin.wizard.file.deployment"
-            name="%wizard.name.deployment">
+            id="customplugin.wizard.file.storedprocedure"
+            name="%wizard.name.storedprocedure">
       </wizard>
    </extension>
    <extension
@@ -91,14 +91,14 @@
       <content-type
             base-type="org.eclipse.core.runtime.xml"
             file-extensions="xml"
-            id="customplugin.contenttype.deployment"
-            name="%content-type.name.deployment"
+            id="customplugin.contenttype.storedprocedure"
+            name="%content-type.name.storedprocedure"
             priority="normal">
          <describer
                class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
             <parameter
                   name="element"
-                  value="hc-deployment">
+                  value="hc-stored-procedures">
             </parameter>
          </describer>
       </content-type>
@@ -114,7 +114,7 @@
                id="customplugin.wizard.file.schema">
          </newWizardShortcut>
          <newWizardShortcut
-               id="customplugin.wizard.file.deployment">
+               id="customplugin.wizard.file.storedprocedure">
          </newWizardShortcut>
       </perspectiveExtension>
    </extension>
@@ -167,12 +167,12 @@
             <command
                   commandId="org.eclipse.ui.newWizard"
                   icon="icons/deployment-file_16x16.png"
-                  label="%deployment.label"
+                  label="%storedprocedure.label"
                   style="push"
-                  tooltip="%deployment.tooltip">
+                  tooltip="%storedprocedure.tooltip">
                <parameter
                      name="newWizardId"
-                     value="customplugin.wizard.file.deployment">
+                     value="customplugin.wizard.file.storedprocedure">
                </parameter>
             <visibleWhen
                   checkEnabled="false">

@@ -1,3 +1,8 @@
+/**
+ * Coder beware: this code is not warranted to do anything.
+ *
+ * Copyright Oct 31, 2009 Carlos Valcarcel
+ */
 package customplugin.projects;
 
 import java.net.URI;
@@ -35,8 +40,7 @@ public class CustomProjectSupport {
 
             String[] paths = {
                     "schema", //$NON-NLS-1$
-                    "deployment-files/java", //$NON-NLS-1$
-                    "clause/java/source/hidden-clause"}; //$NON-NLS-1$
+                    "stored-procedures"}; //$NON-NLS-1$
             addToProjectStructure(project, paths);
         } catch (CoreException e) {
             e.printStackTrace();

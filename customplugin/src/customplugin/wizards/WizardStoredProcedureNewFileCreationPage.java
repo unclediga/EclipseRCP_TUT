@@ -17,21 +17,21 @@ import customplugin.Activator;
  * @author carlos
  *
  */
-public class WizardDeploymentNewFileCreationPage extends WizardNewFileCreationPage {
+public class WizardStoredProcedureNewFileCreationPage extends WizardNewFileCreationPage {
 
-    private static final String PAGE_NAME = "Custom Plug-in Deployment File Wizard"; //$NON-NLS-1$
+    private static final String PAGE_NAME = "Custom Plug-in Stored Procedure File Wizard"; //$NON-NLS-1$
 
-    public WizardDeploymentNewFileCreationPage(IStructuredSelection selection) {
+    public WizardStoredProcedureNewFileCreationPage(IStructuredSelection selection) {
         super(PAGE_NAME, selection);
         
-        setTitle(NewWizardMessages.WizardDeploymentNewFileCreationPage_Deployment_File_Wizard);
-        setDescription(NewWizardMessages.WizardDeploymentNewFileCreationPage_Create_a_Deployment_File);
-        setFileExtension(NewWizardMessages.WizardDeploymentNewFileCreationPage_Deployment_File_Extension);
+        setTitle(NewWizardMessages.WizardStoredProcedureNewFileCreationPage_StoredProcedure_File_Wizard);
+        setDescription(NewWizardMessages.WizardStoredProcedureNewFileCreationPage_Create_a_StoredProcedure_File);
+        setFileExtension(NewWizardMessages.WizardStoredProcedureNewFileCreationPage_StoredProcedure_File_Extension);
     }
 
     @Override
     protected InputStream getInitialContents() {
-        String templateFilePath = NewWizardMessages.WizardDeploymentNewFileCreationPage_Deployment_Template_Location;
+        String templateFilePath = NewWizardMessages.WizardStoredProcedureNewFileCreationPage_StoredProcedure_Template_Location;
         InputStream inputStream = null;
         try {
             inputStream = Activator.getDefault().getBundle().getEntry(templateFilePath).openStream();
